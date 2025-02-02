@@ -16,16 +16,21 @@ const weeks = [
 
 const gridContainer = document.querySelector('.grid-container');
 
-weeks.forEach(week => {
-    const weekCard = document.createElement('a');
-    weekCard.href = `week${week.number}.html`;
-    weekCard.className = 'week-card';
-    
-    weekCard.innerHTML = `
-        <img src="${week.image}" alt="Week ${week.number}">
-        <div class="week-label">Week ${week.number}</div>
-        <div class="week-description">${week.description}</div>
-    `;
-    
-    gridContainer.appendChild(weekCard);
+document.addEventListener('DOMContentLoaded', () => {
+    // Create 13 weeks of content
+    for (let i = 1; i <= 13; i++) {
+        const weekCard = document.createElement('div');
+        weekCard.className = 'week-card fade-in-delayed';
+        weekCard.innerHTML = `
+            <h2>Week ${i}</h2>
+            <p>Click to see my progress and projects from Week ${i}</p>
+        `;
+        
+        // Add click event to navigate to week pages
+        weekCard.addEventListener('click', () => {
+            window.location.href = `week${i}.html`;
+        });
+        
+        gridContainer.appendChild(weekCard);
+    }
 }); 
