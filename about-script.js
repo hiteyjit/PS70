@@ -1,57 +1,55 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const gallery = document.querySelector('.gallery-track');
-    let isDown = false;
-    let startX;
-    let scrollLeft;
+    const track = document.querySelector('.gallery-track');
+    const items = document.querySelectorAll('.gallery-item');
+    const prevBtn = document.querySelector('.prev-btn');
+    const nextBtn = document.querySelector('.next-btn');
+    
+    let currentIndex = 0;
+    const itemWidth = 300; // Width of each item including gap
+    const itemsToShow = Math.floor(track.clientWidth / itemWidth);
+    const maxIndex = items.length - itemsToShow;
 
-    // Mouse events for desktop
-    gallery.addEventListener('mousedown', (e) => {
-        isDown = true;
-        gallery.style.cursor = 'grabbing';
-        startX = e.pageX - gallery.offsetLeft;
-        scrollLeft = gallery.scrollLeft;
+    // Function to update button states
+    const updateButtons = () => {
+        prevBtn.style.opacity = currentIndex === 0 ? '0.5' : '1';
+        prevBtn.style.cursor = currentIndex === 0 ? 'default' : 'pointer';
+        
+        nextBtn.style.opacity = currentIndex >= maxIndex ? '0.5' : '1';
+        nextBtn.style.cursor = currentIndex >= maxIndex ? 'default' : 'pointer';
+    };
+
+    // Function to move the gallery
+    const moveGallery = () => {
+        const position = currentIndex * -itemWidth;
+        track.style.transform = `translateX(${position}px)`;
+        updateButtons();
+    };
+
+    // Event listeners for buttons
+    prevBtn.addEventListener('click', () => {
+        if (currentIndex > 0) {
+            currentIndex--;
+            moveGallery();
+        }
     });
 
-    gallery.addEventListener('mouseleave', () => {
-        isDown = false;
-        gallery.style.cursor = 'grab';
+    nextBtn.addEventListener('click', () => {
+        if (currentIndex < maxIndex) {
+            currentIndex++;
+            moveGallery();
+        }
     });
 
-    gallery.addEventListener('mouseup', () => {
-        isDown = false;
-        gallery.style.cursor = 'grab';
-    });
+    // Initialize button states
+    updateButtons();
 
-    gallery.addEventListener('mousemove', (e) => {
-        if (!isDown) return;
-        e.preventDefault();
-        const x = e.pageX - gallery.offsetLeft;
-        const walk = (x - startX) * 2;
-        gallery.scrollLeft = scrollLeft - walk;
-    });
-
-    // Touch events for mobile
-    gallery.addEventListener('touchstart', (e) => {
-        isDown = true;
-        startX = e.touches[0].pageX - gallery.offsetLeft;
-        scrollLeft = gallery.scrollLeft;
-    });
-
-    gallery.addEventListener('touchend', () => {
-        isDown = false;
-    });
-
-    gallery.addEventListener('touchmove', (e) => {
-        if (!isDown) return;
-        e.preventDefault();
-        const x = e.touches[0].pageX - gallery.offsetLeft;
-        const walk = (x - startX) * 2;
-        gallery.scrollLeft = scrollLeft - walk;
-    });
-
-    // Wheel scroll horizontal
-    gallery.addEventListener('wheel', (e) => {
-        e.preventDefault();
-        gallery.scrollLeft += e.deltaY;
+    // Update gallery on window resize
+    window.addEventListener('resize', () => {
+        const newItemsToShow = Math.floor(track.clientWidth / itemWidth);
+        const newMaxIndex = items.length - newItemsToShow;
+        if (currentIndex > newMaxIndex) {
+            currentIndex = Math.max(0, newMaxIndex);
+            moveGallery();
+        }
     });
 }); 
