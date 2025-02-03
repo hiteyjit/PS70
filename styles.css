@@ -19,6 +19,84 @@ body {
     text-align: center;
     padding: 4rem 2rem;
     background-color: var(--secondary-bg);
+    position: relative;
+    overflow: hidden;
+    min-height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.wire-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        linear-gradient(90deg, var(--secondary-bg) 2px, transparent 2px) 0 0,
+        linear-gradient(180deg, var(--secondary-bg) 2px, transparent 2px) 0 0;
+    background-size: 50px 50px;
+    animation: wireMove 30s linear infinite;
+    opacity: 0.1;
+}
+
+.wire-background::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 50% 50%, var(--accent) 1px, transparent 1px) 0 0;
+    background-size: 30px 30px;
+    animation: wireDots 20s linear infinite;
+    opacity: 0.3;
+}
+
+.main-header h1 {
+    position: relative;
+    z-index: 1;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    background: linear-gradient(45deg, var(--text-primary), var(--text-secondary));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+@keyframes wireMove {
+    0% {
+        transform: translateX(0) translateY(0);
+    }
+    100% {
+        transform: translateX(-50px) translateY(-50px);
+    }
+}
+
+@keyframes wireDots {
+    0% {
+        transform: translateX(0) translateY(0);
+    }
+    100% {
+        transform: translateX(30px) translateY(30px);
+    }
+}
+
+/* Add a subtle glow effect to the header */
+.main-header::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(
+        circle at 50% 50%,
+        rgba(102, 102, 102, 0.1) 0%,
+        transparent 70%
+    );
+    pointer-events: none;
 }
 
 h1, h2 {
