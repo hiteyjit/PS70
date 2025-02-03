@@ -11,15 +11,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Function to update button states
     const updateButtons = () => {
-        prevBtn.style.opacity = currentIndex === 0 ? '0.5' : '1';
-        prevBtn.style.cursor = currentIndex === 0 ? 'default' : 'pointer';
+        // Only disable prev button when at the very beginning
+        prevBtn.style.opacity = currentIndex <= 0 ? '0.5' : '1';
+        prevBtn.style.cursor = currentIndex <= 0 ? 'default' : 'pointer';
         
+        // Only disable next button when showing the last set of items
         nextBtn.style.opacity = currentIndex >= maxIndex ? '0.5' : '1';
         nextBtn.style.cursor = currentIndex >= maxIndex ? 'default' : 'pointer';
     };
 
     // Function to move the gallery
     const moveGallery = () => {
+        // Ensure currentIndex stays within bounds
+        currentIndex = Math.max(0, Math.min(currentIndex, maxIndex));
         const position = currentIndex * -itemWidth;
         track.style.transform = `translateX(${position}px)`;
         updateButtons();
@@ -46,11 +50,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Update gallery on window resize
     window.addEventListener('resize', () => {
-        // Recalculate maxIndex based on current window size
         const viewportWidth = track.parentElement.clientWidth;
-        const visibleItems = Math.floor((viewportWidth - 64) / itemWidth); // 64px for padding
+        const visibleItems = Math.floor((viewportWidth - 64) / itemWidth);
         const newMaxIndex = Math.max(0, items.length - visibleItems);
         
+        // Adjust currentIndex if it's beyond the new maximum
         if (currentIndex > newMaxIndex) {
             currentIndex = newMaxIndex;
         }
