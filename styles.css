@@ -34,11 +34,11 @@ body {
     right: 0;
     bottom: 0;
     background: 
-        linear-gradient(90deg, var(--secondary-bg) 2px, transparent 2px) 0 0,
-        linear-gradient(180deg, var(--secondary-bg) 2px, transparent 2px) 0 0;
+        linear-gradient(90deg, var(--text-primary) 1px, transparent 1px) 0 0,
+        linear-gradient(180deg, var(--text-primary) 1px, transparent 1px) 0 0;
     background-size: 50px 50px;
     animation: wireMove 30s linear infinite;
-    opacity: 0.1;
+    opacity: 0.05;
 }
 
 .wire-background::before {
@@ -49,10 +49,10 @@ body {
     right: 0;
     bottom: 0;
     background: 
-        radial-gradient(circle at 50% 50%, var(--accent) 1px, transparent 1px) 0 0;
+        radial-gradient(circle at 50% 50%, var(--text-primary) 1px, transparent 1px) 0 0;
     background-size: 30px 30px;
     animation: wireDots 20s linear infinite;
-    opacity: 0.3;
+    opacity: 0.08;
 }
 
 .main-header h1 {
@@ -93,7 +93,7 @@ body {
     bottom: 0;
     background: radial-gradient(
         circle at 50% 50%,
-        rgba(102, 102, 102, 0.1) 0%,
+        rgba(255, 255, 255, 0.1) 0%,
         transparent 70%
     );
     pointer-events: none;
