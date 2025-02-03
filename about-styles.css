@@ -1,5 +1,5 @@
 .about-hero {
-    height: 60vh;
+    height: 50vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -42,28 +42,36 @@
 
 .photo-gallery {
     width: 100%;
-    overflow: hidden;
+    overflow-x: scroll;
     position: relative;
     padding: 2rem 0;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+}
+
+.photo-gallery::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
 }
 
 .gallery-track {
     display: flex;
     gap: 2rem;
-    transition: transform 0.3s ease-out;
-    cursor: grab;
-}
-
-.gallery-track:active {
-    cursor: grabbing;
+    padding: 0 2rem;
+    width: max-content; /* This is the key fix for scrolling */
 }
 
 .gallery-item {
     min-width: 300px;
+    max-width: 300px; /* Add this to maintain consistent width */
     background-color: var(--secondary-bg);
     border-radius: 15px;
     overflow: hidden;
     flex-shrink: 0;
+    transition: transform 0.3s ease;
+}
+
+.gallery-item:hover {
+    transform: translateY(-5px);
 }
 
 .gallery-item img {
@@ -98,4 +106,25 @@
     .gallery-item {
         min-width: 250px;
     }
+}
+
+/* Add smooth scrolling to the gallery */
+.photo-gallery {
+    scroll-behavior: smooth;
+}
+
+.about-header {
+    text-align: center;
+    padding: 2rem;
+    background-color: var(--secondary-bg);
+    margin-bottom: 2rem;
+}
+
+.about-header h1 {
+    margin: 0;
+    font-size: 2.5rem;
+    background: linear-gradient(45deg, var(--text-primary), var(--text-secondary));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
 } 
