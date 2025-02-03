@@ -45,6 +45,10 @@
     position: relative;
     padding: 2rem 0;
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
 }
 
 .gallery-track {
@@ -123,16 +127,22 @@
     color: transparent;
 }
 
+.gallery-nav-container {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
 .gallery-nav {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
+    position: static;
+    transform: none;
     background-color: var(--secondary-bg);
     color: var(--text-primary);
     border: none;
-    width: 40px;
+    width: 60px;
     height: 40px;
-    border-radius: 50%;
+    border-radius: 20px;
     cursor: pointer;
     z-index: 2;
     font-size: 1.2rem;
@@ -144,15 +154,11 @@
 
 .gallery-nav:hover {
     background-color: var(--card-hover);
-    transform: translateY(-50%) scale(1.1);
+    transform: scale(1.1);
 }
 
-.prev-btn {
-    left: 1rem;
-}
-
-.next-btn {
-    right: 1rem;
+.prev-btn, .next-btn {
+    position: static;
 }
 
 /* Add a subtle glow effect to buttons */

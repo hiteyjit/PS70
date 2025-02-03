@@ -5,9 +5,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const nextBtn = document.querySelector('.next-btn');
     
     let currentIndex = 0;
-    const itemWidth = 300; // Width of each item including gap
-    const itemsToShow = Math.floor(track.clientWidth / itemWidth);
-    const maxIndex = items.length - itemsToShow;
+    const itemWidth = 322; // 300px width + 22px gap
+    const itemsToShow = 3; // Show 3 items at a time
+    const maxIndex = Math.max(0, items.length - itemsToShow);
 
     // Function to update button states
     const updateButtons = () => {
@@ -40,16 +40,20 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Initialize button states
+    // Initialize button states and position
     updateButtons();
+    moveGallery();
 
     // Update gallery on window resize
     window.addEventListener('resize', () => {
-        const newItemsToShow = Math.floor(track.clientWidth / itemWidth);
-        const newMaxIndex = items.length - newItemsToShow;
+        // Recalculate maxIndex based on current window size
+        const viewportWidth = track.parentElement.clientWidth;
+        const visibleItems = Math.floor((viewportWidth - 64) / itemWidth); // 64px for padding
+        const newMaxIndex = Math.max(0, items.length - visibleItems);
+        
         if (currentIndex > newMaxIndex) {
-            currentIndex = Math.max(0, newMaxIndex);
-            moveGallery();
+            currentIndex = newMaxIndex;
         }
+        moveGallery();
     });
 }); 
