@@ -11,11 +11,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Function to update button states
     const updateButtons = () => {
-        // Only disable prev button when at the very beginning
+        // Update prev button state
         prevBtn.style.opacity = currentIndex <= 0 ? '0.5' : '1';
         prevBtn.style.cursor = currentIndex <= 0 ? 'default' : 'pointer';
         
-        // Only disable next button when showing the last set of items
+        // Update next button state
         nextBtn.style.opacity = currentIndex >= maxIndex ? '0.5' : '1';
         nextBtn.style.cursor = currentIndex >= maxIndex ? 'default' : 'pointer';
     };
@@ -24,29 +24,32 @@ document.addEventListener('DOMContentLoaded', () => {
     const moveGallery = () => {
         // Ensure currentIndex stays within bounds
         currentIndex = Math.max(0, Math.min(currentIndex, maxIndex));
-        const position = currentIndex * -itemWidth;
+        
+        // Calculate position (negative for moving right, positive for moving left)
+        const position = -currentIndex * itemWidth;
         track.style.transform = `translateX(${position}px)`;
         updateButtons();
     };
 
-    // Event listeners for buttons
+    // Event listeners for buttons with separate logic for each direction
     prevBtn.addEventListener('click', () => {
         if (currentIndex > 0) {
-            currentIndex--;
+            currentIndex = Math.max(0, currentIndex - 1); // Move left by decreasing index
             moveGallery();
         }
     });
 
     nextBtn.addEventListener('click', () => {
         if (currentIndex < maxIndex) {
-            currentIndex++;
+            currentIndex = Math.min(maxIndex, currentIndex + 1); // Move right by increasing index
             moveGallery();
         }
     });
 
-    // Initialize button states and position
-    updateButtons();
+    // Initialize gallery position and button states
+    currentIndex = 0;
     moveGallery();
+    updateButtons();
 
     // Update gallery on window resize
     window.addEventListener('resize', () => {
@@ -55,9 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const newMaxIndex = Math.max(0, items.length - visibleItems);
         
         // Adjust currentIndex if it's beyond the new maximum
-        if (currentIndex > newMaxIndex) {
-            currentIndex = newMaxIndex;
-        }
+        currentIndex = Math.min(currentIndex, newMaxIndex);
         moveGallery();
     });
 }); 
