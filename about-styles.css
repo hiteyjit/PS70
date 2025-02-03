@@ -49,6 +49,7 @@
     flex-direction: column;
     align-items: center;
     gap: 2rem;
+    scroll-behavior: smooth;
 }
 
 .gallery-track {
@@ -106,11 +107,6 @@
     }
 }
 
-/* Add smooth scrolling to the gallery */
-.photo-gallery {
-    scroll-behavior: smooth;
-}
-
 .about-header {
     text-align: center;
     padding: 2rem;
@@ -127,22 +123,22 @@
     color: transparent;
 }
 
-.gallery-nav-container {
+.photo-gallery .gallery-nav-container {
     display: flex;
     gap: 1rem;
     justify-content: center;
     margin-top: 1rem;
+    width: 100%;
 }
 
-.gallery-nav {
-    position: static;
-    transform: none;
+.photo-gallery .gallery-nav {
+    position: static !important;
+    width: 60px !important;
+    height: 40px !important;
+    border-radius: 20px !important;
     background-color: var(--secondary-bg);
     color: var(--text-primary);
     border: none;
-    width: 60px;
-    height: 40px;
-    border-radius: 20px;
     cursor: pointer;
     z-index: 2;
     font-size: 1.2rem;
@@ -152,29 +148,29 @@
     transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
-.gallery-nav:hover {
+.photo-gallery .gallery-nav:hover {
     background-color: var(--card-hover);
     transform: scale(1.1);
 }
 
-.prev-btn, .next-btn {
+.photo-gallery .prev-btn,
+.photo-gallery .next-btn {
     position: static;
 }
 
-/* Add a subtle glow effect to buttons */
-.gallery-nav::after {
+.photo-gallery .gallery-nav::after {
     content: '';
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    border-radius: 50%;
+    border-radius: 20px;
     box-shadow: 0 0 15px rgba(102, 102, 102, 0.3);
     opacity: 0;
     transition: opacity 0.3s ease;
 }
 
-.gallery-nav:hover::after {
+.photo-gallery .gallery-nav:hover::after {
     opacity: 1;
 } 
