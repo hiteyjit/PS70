@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
     `;
     
     finalProjectCard.addEventListener('click', () => {
-        window.location.href = 'Final Project/week1.html';
+        window.location.href = 'Final Project/finalproject.html';
     });
     
     gridContainer.appendChild(finalProjectCard);
