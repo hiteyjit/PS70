@@ -11,7 +11,7 @@ const weeks = [
     { number: 10, image: 'Week 10/week10.jpg', description: 'Machine Building' },
     { number: 11, image: 'Week 11/week11.jpg', description: 'Project Development I' },
     { number: 12, image: 'Week 12/week12.jpg', description: 'Project Development II' },
-    { number: 13, image: 'Week 13/week13.jpg', description: 'Final Project' },
+    { number: 13, image: 'Week 13/week13.jpg', description: 'Final Project Ideation' }
 ];
 
 const gridContainer = document.querySelector('.grid-container');
@@ -33,4 +33,18 @@ document.addEventListener('DOMContentLoaded', () => {
         
         gridContainer.appendChild(weekCard);
     }
+
+    // Add Final Project card
+    const finalProjectCard = document.createElement('div');
+    finalProjectCard.className = 'week-card fade-in-delayed final-project-card';
+    finalProjectCard.innerHTML = `
+        <h2>Final Project</h2>
+        <p>Click to see my final project documentation</p>
+    `;
+    
+    finalProjectCard.addEventListener('click', () => {
+        window.location.href = 'Final Project/week1.html';
+    });
+    
+    gridContainer.appendChild(finalProjectCard);
 }); 

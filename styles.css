@@ -249,4 +249,25 @@ h1, h2 {
 .back-btn:hover {
     transform: scale(1.05);
     background-color: var(--card-hover);
+}
+
+.final-project-card {
+    background-color: var(--accent) !important;
+    grid-column: 1 / -1;  /* Makes the card span full width */
+    min-height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.final-project-card h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.final-project-card:hover {
+    transform: translateY(-5px);
+    background-color: var(--card-hover) !important;
 } 
