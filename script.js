@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
         
         // Add click event to navigate to week pages
         weekCard.addEventListener('click', () => {
-            window.location.href = `./Week ${i}/week${i}.html`;
+            window.location.href = `Week ${i}/week${i}.html`;
         });
         
         gridContainer.appendChild(weekCard);
