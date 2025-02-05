@@ -1,20 +1,25 @@
-<!DOCTYPE html>
+const fs = require('fs');
+const path = require('path');
+
+for (let i = 2; i <= 13; i++) {
+    const weekDir = `Week ${i}`;
+    const weekContent = `<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Week 2 - PS70 Project</title>
+    <title>Week ${i} - PS70 Project</title>
     <link rel="stylesheet" href="../styles.css">
     <link rel="stylesheet" href="../week-styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Raleway:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 <body>
     <header class="week-header fade-in">
-        <h1>Week 2</h1>
+        <h1>Week ${i}</h1>
     </header>
     
     <div class="week-description fade-in">
-        <h3>Computer-Aided Design: Exploring the fundamentals of CAD software and creating initial designs.</h3>
+        <h3>Week ${i} Description Goes Here</h3>
     </div>
 
     <main class="week-content fade-in-delayed">
@@ -39,4 +44,10 @@
 
     <a href="../index.html" class="back-btn">Back to Home</a>
 </body>
-</html> 
+</html>`;
+
+    if (!fs.existsSync(weekDir)){
+        fs.mkdirSync(weekDir);
+    }
+    fs.writeFileSync(path.join(weekDir, `week${i}.html`), weekContent);
+} 
