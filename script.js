@@ -17,22 +17,22 @@ const weeks = [
 const gridContainer = document.querySelector('.grid-container');
 
 document.addEventListener('DOMContentLoaded', () => {
-    // Create 13 weeks of content
-    for (let i = 1; i <= 13; i++) {
+    // Create week cards using the weeks array
+    weeks.forEach(week => {
         const weekCard = document.createElement('div');
         weekCard.className = 'week-card fade-in-delayed';
         weekCard.innerHTML = `
-            <h2>Week ${i}</h2>
-            <p>Click to see my progress and projects from Week ${i}</p>
+            <h2>Week ${week.number}</h2>
+            <p>${week.description}</p>
         `;
         
         // Add click event to navigate to week pages
         weekCard.addEventListener('click', () => {
-            window.location.href = `Week ${i}/week${i}.html`;
+            window.location.href = `Week ${week.number}/week${week.number}.html`;
         });
         
         gridContainer.appendChild(weekCard);
-    }
+    });
 
     // Add Final Project card
     const finalProjectCard = document.createElement('div');
