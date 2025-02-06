@@ -43,13 +43,16 @@
             
             <p><strong>An actual board to attach components to</strong></p>
             <ul>
-                <li>This is probably the most simple thing in this project. This would require simple woodworking & wood cutting to create a large longboard/skateboard shape cut into a thick piece of wood (design in image). It would likely be done using the laser cutting machine or potentially the CNC machine.</li>
+                <li>This is probably the most simple thing in this project. This would require simple woodworking & wood cutting to create a large longboard/skateboard shape cut into a thick piece of wood (design below). It would likely be done using the laser cutting machine or potentially the CNC machine.</li>
             </ul>
+
+            <img src="longboard.png" alt="Longboard design">
+            <p class="image-caption">How the basic wood could be cut into for a skateboard/longboard shape</p>
 
             <p><strong>A form of remote control transmission and receiver</strong></p>
             <p>There were a few ways I could approach the remote control transmission:</p>
             <ul>
-                <li>Use a regular RC-car remote control which has a trigger mechanism to accelerate or decelerate (image)</li>
+                <li>Use a regular RC-car remote control which has a trigger mechanism to accelerate or decelerate</li>
                 <li>Create a 'glove' device that would sense if I've clenched my fist or not to accelerate or decelerate the board</li>
                 <ul>
                     <li>Bobby suggested that this idea could be awesome even on its own, so I've ideated further below</li>
@@ -63,7 +66,9 @@
                 <ul>
                     <li>This is an easy approach to making the skateboard, especially if one could acquire the motors parts. However, this is exactly the issue: motors that output high enough power to move a human body (>500W) are quite expensive to buy, and couple that with needing to be housed within skateboard wheels, the price increases even more.</li>
                 </ul>
-                <li>An alternative method would be to use a system of gears to indirectly spin the wheels of a skateboard. The wheels would be placed on specially designed axles, somewhat taking inspiration from a car's differential system (image), enabling a singular motor to spin both wheels. However, this too, requires a powerful motor, bringing up the issue of cost.</li>
+                <img src="wheels.jpg" alt="Electric skateboard wheels">
+                <p class="image-caption">Commonly used motorized wheels in electric skateboards</p>
+                <li>An alternative method would be to use a system of gears to indirectly spin the wheels of a skateboard. The wheels would be placed on specially designed axles, somewhat taking inspiration from a car's differential system, enabling a singular motor to spin both wheels. However, this too, requires a powerful motor, bringing up the issue of cost.</li>
             </ul>
 
             <p><strong>A Battery</strong></p>
@@ -76,14 +81,38 @@
 
         <div class="content-box">
             <h2>Idea 2: A wearable glove that can move an robot or object</h2>
-            <img src="your-photo.jpg" alt="Sketches Image">
-            <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <img src="glove.jpeg" alt="Drawing of glove system">
+            <p class="image-caption">A (crude) drawing of what I thought could be the glove system</p>
+            <p>This is an idea that fascinates me quite a lot. Originally, this was supposed to simply be part of the larger skateboard idea, where the glove would be an easy way to accelerate or decelerate the skateboard.</p>
+
+            <p>Essentially, I was considering some sort of mechanism that could detect tensile effects: when the fist would be clenched, there would be some sort of tensing/stretching of wires that could be detected, and when the fist would be relaxed, these wires would not be stretched. My initial idea included actual threads/ wires that would stretch and relax, but I felt that this might not be the best idea, as these threads may just snap or get inelastically deformed if stretched too much.</p>
+
+            <p>While discussing this idea with Bobby, however, he mentioned the possibility of using a Strain Gauge. This would modulate the current flowing through it by altering its resistance based on stretch (similar to a potentiometer). It could be possible to attach these to each individual finger and create an overall map of how much each finger and the whole hand is stretching or relaxed. The glove would also have a transmission module that would transmit this overall data of how much the hand is clenched into an output that could control the acceleration or deceleration of, for example, a robotic car.</p>
+
+            <p>An additionally cool addition to this glove device would be to use an accelerometer to detect the orientation and direction in which the hand is facing. This could be useful to steer a robotic car, making it even more functionally useful.</p>
         </div>
 
         <div class="content-box">
             <h2>Idea 3:LED Monitor Backlight</h2>
-            <img src="your-photo.jpg" alt="Prototype Image">
-            <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+            <img src="screen.jpeg" alt="Drawing Image">
+            <p class="image-caption">Another (crude) drawing of what could be how the LED monitor backlight system could look like</p>
+
+            <p>I remember the pandemic-era trend of everyone getting LED-strip lights to decorate their rooms with. A few months after that had taken off, some random advertisements began showing up on my social media with people giving their living rooms an 'immersive theater' effect by lining these same LED strips on the back of their televisions and making them responsive to what is playing on the television. I feel this could be enough of a project to integrate inputs and outputs, and could also go deep into sensory modalities to actually detect color profiles from content playing on the screen. An interesting addition could also be having a remote control to alter light's intensity based on sound responsiveness, where certain sound effects could be more dramatic with brighter lights and colors if the user so chooses.</p>
+
+            <p>Upon thinking of required components, it is clear that I would need LED lights (of course), some form of audio intensity detection (essentially data from a microphone), some form of transmission and receiving from a remote control, and a light-sensing mechanism. There would need to be a way to detect the color profiles from all the parts of the content being played on the screen, and it would also need to avoid the obstruction of their view. I feel this light sensing mechanism could be approached in a few ways:</p>
+            <ul>
+                <li>Have a photoresistor/color detection array placed:</li>
+                <ul>
+                    <li>On the corners of the screen: Similar to the corner-huggers on books, there could be a way to place some form of sensors on each corner of the screen to be able to detect different colors and light intensities, and alter the resistance of voltage entering the LED strip to mimic the screen</li>
+                    <li>As a bar in front of the screen: Similar to how there are often speaker bars placed slightly in front of screens, there could potentially similar way to place a long strip/bar of light detectors along the bottom edge of the screen to analyze the colors on different parts of the screen</li>
+                    <img src="speaker_bar.jpg" alt="Speaker bar image">
+                    <p class="image-caption">A bar of detecors placed in front of the screen that can detect color and light changes</p>
+                </ul>
+                <li>Have a method to digitally run the content played on the screen through a software that can then process color and output it directly onto the LED strip</li>
+            </ul>
+            <p>This way would bypass physical sensing mechanisms, and would instead rely more on a software method that could digitally process the content being played on the screen. This could be more accurate, however would require less physical fabrication and more software, so I am a little skeptical about using this method.</p>
+            <img src="led_light.jpg" alt="Screen Image">
+            <p class="image-caption">A more 'professional' image of what the LED monitor backlight system could look like</p>
         </div>
     </main>
 
