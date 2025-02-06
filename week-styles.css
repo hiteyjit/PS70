@@ -83,7 +83,7 @@
     list-style-type: disc;
     margin: 1rem 0;
     padding-left: 2rem;
-    color: #333;
+    color: #333333 !important;
     display: block;
 }
 
@@ -91,6 +91,7 @@
     margin-bottom: 0.5rem;
     line-height: 1.6;
     display: list-item;
+    color: #333333 !important;
 }
 
 .content-box strong {
