@@ -11,12 +11,14 @@
 .profile-container {
     position: relative;
     z-index: 1;
+    width: 500px;
 }
 
 .large-profile-photo {
-    width: 500px;
+    width: 100%;
     height: 300px;
     object-fit: cover;
+    border-radius: 20px;
     box-shadow: 0 0 30px rgba(102, 102, 102, 0.3);
     animation: float 6s ease-in-out infinite;
 }
@@ -126,8 +128,11 @@
 }
 
 @media (max-width: 768px) {
-    .large-profile-photo {
+    .profile-container {
         width: 300px;
+    }
+    
+    .large-profile-photo {
         height: 180px;
     }
 
