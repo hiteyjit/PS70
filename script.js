@@ -1,5 +1,5 @@
 const weeks = [
-    { number: 1, image: 'Week 1/week1.jpg', description: 'Introduction to Digital Fabrication' },
+    { number: 1, image: 'Week 1/week1.jpg', description: 'Website Creation & Ideas for the Final Project' },
     { number: 2, image: 'Week 2/week2.jpg', description: 'Computer-Aided Design' },
     { number: 3, image: 'Week 3/week3.jpg', description: '3D Printing and Scanning' },
     { number: 4, image: 'Week 4/week4.jpg', description: 'Electronic Input Devices' },
