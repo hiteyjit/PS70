@@ -198,4 +198,8 @@
 
 .photo-gallery .gallery-nav:hover::after {
     opacity: 1;
+}
+
+.grid-item.vertical img {
+    height: 500px;
 } 
