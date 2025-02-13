@@ -121,4 +121,44 @@
     margin: 10px auto;
     font-style: italic;
     color: #666;
+}
+
+/* Add these styles for the download button */
+.download-btn {
+    display: inline-block;
+    padding: 1rem 2rem;
+    background-color: var(--accent);
+    color: var(--text-primary);
+    text-decoration: none;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    margin: 1rem 0;
+    border: none;
+    cursor: pointer;
+    font-family: 'Raleway', sans-serif;
+    font-size: 1rem;
+}
+
+.download-btn:hover {
+    background-color: var(--card-hover);
+    transform: translateY(-2px);
+}
+
+.download-btn i {
+    margin-right: 8px;
+}
+
+/* Add these styles for figures and captions */
+figure {
+    margin: 0;
+    padding: 0;
+    margin-bottom: 2rem;
+}
+
+figcaption {
+    text-align: center;
+    margin: 10px auto;
+    font-style: italic;
+    color: #666;
+    font-size: 0.9rem;
 } 
