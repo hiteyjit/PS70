@@ -14,13 +14,13 @@
     </header>
     
     <div class="week-description fade-in">
-        <h3>This week's focus was on understanding the fundamentals of using Fusion 360 & making our very own box to store our projects in.</h3>
+        <h3>This week's focus was on understanding the fundamentals of using Fusion 360 & making our very own box to store our projects in. I have had some experience in 3D design in the past, and it was fun to get a refresher course this week to make sure I remembered all the crucial details and steps. I also learnt a lot of fun new sketch tools this week! And, of course, the extrusions in class were mind-blowing.</h3>
     </div>
 
     <main class="week-content fade-in-delayed">
         <div class="content-box">
             <h2>Box-Making</h2>
-            <img src="your-photo.jpg" alt="Section Image">
+            
             <p>I had a few designs ideas for my box. We had been shown some basic no-lid box ideas in class, and those seemed great, but I wanted something more unique for my project. So, I came up with the idea of making a nice large box with 2 rows of 3 drawers.</p>
 
             <p>In the process to ideate, I thought that I would use parts of the useless box that we had designed in class, as this was a simple box with an open top and 4 sides that could be used as a drawer. (insert image of useless box here)</p>
@@ -30,43 +30,57 @@
             <p>HOWEVER, after spending substantial time on this idea, I pivoted massively to try and make a box more reflective of my project. This made me want to make a: SKATEBOARD SHAPED BOX!</p>
             <div class="sub-content-box">
                 <h3>The inspiration</h3>
-                <img src="your-photo.jpg" alt="Boosted board inspiration">
+                <img src="boosted.jpg" alt="Boosted board inspiration">
+                <figcaption>A Boosted Board - the electric skateboard that inspired my box design</figcaption>
                 <p>This was the initial inspiration for the shape of my box: a boosted board. This seemed like it was long and wide enough (compared to a regular skateboard) to fit most of my stuff. To be honest, it also looked better as a 2D shape than a regular skateboard.</p>
                 <p>I then imported this same image into Fusion 360 as a canvas and then traced out the basic shape of the skateboard using the sketch tool. Once I had done this, I used the 'offset' tool to make a border around the base that would act as the walls of the box. Once making the sketches, I exxtruded everything to make it look like this:</p>
-                <img src="your-photo.jpg" alt="Curved box design">
+                <img src="curved.png" alt="Curved box design">
+                <figcaption>My initial curved box design in Fusion 360 showing the skateboard-inspired shape with curved walls</figcaption>
                 <p>However, as you can see, the one thing that made it look good was the one thing that made it impossible to make: the curvature. After an extensive discussion with Bobby, I realized that the Laser Cutter would not be able to create the curvature of the walls I would need to have it wrap around the base well. This makes sense, since the laser cutter can only print 2D shapes with uniform thickness & straight shapes. We tried many features in Fusion, such as splitting the body, trying to make it into a flat 'sheet metal' body, etc, but none of these worked and it was simply getting too complicated to figure out. We could have cut a simple large rectangle and have uniform rasterized cuts on the surface to make it easy to simply bend, but it would have taken too much effort to glue it together.</p>
 
-                <p>As a result, I completely uprooted my design and instead of having curved bases, I instead made the entire design mostly out of rectangles. I created entirely new parameters (below), and made a rectangular base that looked somewhat like a skateboard:</p>
+                <p>As a result, I completely uprooted my design and instead of having curved base, I instead made the entire design mostly out of rectangles. I created entirely new parameters (below), and made a rectangular base that looked somewhat like a skateboard:</p>
 
-                <img src="your-photo.jpg" alt="Rectangular skateboard base design">
-
-                <p>After this, I followed a <a href="youtube-link-here" target="_blank">youtube tutorial</a> on trying to add 'teeth' to the design so I could make the walls easily slot onto the base:</p>
+                <img src="Rect_base.png" alt="Rectangular skateboard base design">
+                <figcaption>My rectangular base design in Fusion 360 (the teeth are still to be added)</figcaption>
+                
+                <p>After this, I followed a <a href="https://www.youtube.com/watch?v=9U2JPfkQpsE&ab_channel=HobbyistMaker" target="_blank">youtube tutorial</a> on trying to add 'teeth' to the design so I could make the walls easily slot onto the base:</p>
+                <img src="teeth.png" alt="Base design with teeth">
+                <figcaption>The base after adding the teeth</figcaption>
+                <p> I also created the walls of the box using the same tutorial and was able to make them so that they fit the teeth.</p>
 
                 <p>I also wanted to have some cool designs on the sides of the box. The idea I had was to have my name on one side of the box, and the other side have the Harvard Shield on it. The name was simple enough, all I had to do was create a new sketch, add a text box, and modify it to my liking:</p>
+                <img src="namewall.png" alt="Wall design with my name">
+                <figcaption>One wall's design with my name on it</figcaption>
 
                 <p>The Veritas Shield, however, was not so simple. I could not simply trace out all the elements from the shield myself as that would be extremely time consuming. As a solution to the complication of tracing, I found a method to convert a PDF into a usable sketch in Fusion.</p>
 
                 <p>This involved finding a PDF of the shield and importing it into AutoCAD. Once it imports, it is able to trace out the features of the PDF (provided it is not a mapping of a pixel photo), and then lets you export a DXF file of the design:</p>
 
-                <img src="your-photo.jpg" alt="AutoCAD shield tracing">
+                <img src="autocad.png" alt="AutoCAD shield tracing">
+                <figcaption>AutoCAD tracing of the shield</figcaption>
 
                 <p>Once I created the DXF file, I imported it into my Fusion 360 design, which then allowed me to move it around, scale it, and adjust it until it reached a point of my liking:</p>
+                <img src="shieldwall.png" alt="Wall design with Harvard shield">
+                <figcaption>The wall design with the Harvard shield imported from the DXF file. The content inside the shield looks very messy, however this is because the DXF file had a lot of verticies, and these are all showing up in the sketch</figcaption>
 
                 <p>So, by largely using the sketch tool, I was able to create a good looking design of the skateboard box:</p>
 
-                <img src="your-photo.jpg" alt="Final skateboard box design">
-
+                <img src="fulldesign.png" alt="Final skateboard box design">
+                <figcaption>The final skateboard box design</figcaption>
                 <p>The walls:</p>
 
-                <img src="your-photo.jpg" alt="Box walls design">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                    <img src="wall1.png" alt="1) wall design">
+                    <img src="wall2.png" alt="2) wall design">
+                </div>
+                <figcaption>The wall designs from different angles</figcaption>
 
                 <p>I also added these small skateboard-style handles to the sides of the box that were a nice detail I thought was fitting for the entire project:</p>
 
-                <img src="your-photo.jpg" alt="Skateboard handles detail">
+                <img src="handle.png" alt="Skateboard handles detail">
+                <figcaption>The skateboard handles added to the sides of the box</figcaption>
 
                 <p>All I had to do now was to create a new sketch, create projections of each side individually in each sketch, and then export each sketch as a DXF that contained the designs. You can also download these files to see for yourself.</p>
-
-                <img src="your-photo.jpg" alt="DXF exports">
 
                 <p>Now, it was simply a matter of making sure the laser cutter processed the design correctly, and I was able to cut out the walls for my box!</p>
 
@@ -74,12 +88,18 @@
                     <source src="your-video.mp4" type="video/mp4">
                     Your browser does not support the video tag.
                 </video>
+                <figcaption>A timelapse of my test cut of the Harvard Shield being printed</figcaption>
 
                 <p>Once cut, all I had to do was join the walls together at the teeth linkages (I used hot glue), let it dry, and voila! My skateboard-shaped box was ready!</p>
 
-                <img src="your-photo.jpg" alt="Final box photo 1">
-                <img src="your-photo.jpg" alt="Final box photo 2">
-                <img src="your-photo.jpg" alt="Final box photo 3">
+                <img src="box1.png" alt="Final box photo 1">
+                <img src="box2.png" alt="Final box photo 2">
+                <img src="box3.png" alt="Final box photo 3">
+                <img src="box4.png" alt="Final box photo 4">
+                <img src="box5.png" alt="Final box photo 5">
+                <figcaption>The final skateboard box from different angles</figcaption>
+
+                <p>The most useful tools for this were: the project tool (undisputed goat), the coincident contraint (to help make sure I joined everything), the extrude tool, the mirror tool, and the rectangular pattern too </p>
 
             </div>
         </div>
@@ -88,39 +108,45 @@
             <h2>Modelling a new object: A Coffee Cup Lid</h2>
             <p>I enjoy drinking coffee a lot and often have some extra mug lids (such as these) lying around. Here's how it looks:</p>
 
-            <img src="your-photo.jpg" alt="Coffee mug lid reference">
+            <img src="lid.png" alt="Coffee mug lid reference">
+            <figcaption>My coffee mug lid reference</figcaption>
 
             <p>I first had to measure some basic dimensions:</p>
 
-            <img src="your-photo.jpg" alt="Lid measurement 1">
-            <img src="your-photo.jpg" alt="Lid measurement 2">
-            <img src="your-photo.jpg" alt="Lid measurement 3">
+            <img src="lid1.jpg" alt="Lid measurement 1">
+            <img src="lid2.jpg" alt="Lid measurement 2">
+            <img src="lid3.jpg" alt="Lid measurement 3">
+            <figcaption>The measurements of the coffee lid</figcaption>
 
             <p>I then created some basic circles in fusion, and extruded them to different heights (similar to the actual dimensions of the lid):</p>
 
-            <img src="your-photo.jpg" alt="Basic circles and extrusions">
+            <img src="coffee.png" alt="Basic circles and extrusions">
+            <figcaption>The basic circles and extrusions of the coffee lid</figcaption>
 
             <p>Then, I tried to emulate the top of the coffee lid by creating an ellipse to simulate the change in thin/thick that is on the top of the lid. Once I made the sketch, I extruded it:</p>
 
-            <img src="your-photo.jpg" alt="Ellipse extrusion">
+            <img src="coffee.png" alt="Ellipse extrusion">
+            <figcaption>It now appears to look more like a coffee cup lid</figcaption>
 
             <p>I then used the draft tool to create the rising angle towards the area where the coffee actually comes out of:</p>
 
-            <img src="your-photo.jpg" alt="Draft tool application">
+            <img src="coffee3.png" alt="Draft tool application">
+            <figcaption>That's some good tilt</figcaption>
 
-            <p>I then used the fillet tool to smooth out some edges:</p>
-
-            <img src="your-photo.jpg" alt="Fillet smoothing">
+            <p>I then used the fillet tool to smooth out some edges and added the hole for the coffee to come out of:</p>
+            <img src="coffee4.png" alt="Fillet smoothing">
+            <figcaption>Rounded edges</figcaption>
 
             <p>I also then created some sketches to add some more details to the top of the lid, extruded them, and used the fillet tool to smooth out the circles:</p>
 
-            <img src="your-photo.jpg" alt="Additional details and smoothing">
+            <img src="coffee5.png" alt="Additional details and smoothing">
+            <figcaption>Additional details and smoothing</figcaption>
 
             <p>All of this helped me create the final design:</p>
 
-            <img src="your-photo.jpg" alt="Final coffee lid design">
-            <img src="your-photo.jpg" alt="Section Image">
-            
+            <img src="finalcof.png" alt="Final coffee lid design">
+            <img src="finalcof2.png" alt="Section Image">
+            <figcaption>The final coffee lid design</figcaption>
         </div>
 
         <div class="content-box">
@@ -130,11 +156,16 @@
             <p>I had some relative idea on how to create gears, but I wanted to be able to create a fully symmetrical and actually 3D-printable design of the gear.</p>
 
             <p>Intitially, before I found the YouTube tutorial, I was ardously creating the individual teeth of the gear by creating sketches attached to a circle that I had created. I tried using the pattern toon, mirror tool, and similar ones that I was used to, but I was not able to get far:</p>
-            <img src = "your-photo.jpg" alt = "Initial gear design">
+            <img src = "gear1.png" alt = "Initial gear design">
+            <figcaption>The initial gear designing attempt</figcaption>
 
-            <p> In frustration, I found a youtube tutorial on how to make a rack-and-pinion system, and managed to create both the rack and pinion. It was arguably much, much easier to quickly create a gear using the python tool Fusion 360 has built-in.</p>
+            <p> In frustration, I found a <a href="https://www.youtube.com/watch?v=DdCMjsYvVTc&ab_channel=3DPrinterAcademyTutorials">youtube tutorial</a> on how to make a gear system, and managed to create the gear. It was arguably much, much easier to quickly make a gear using the python tool Fusion 360 has built-in.</p>
             <p> Using the tutorial, I was quickly able to make a much better design:</p>
-            <img src = "your-photo.jpg" alt = "Rack and Pinion">
+            <img src = "finalgear.png" alt = "A gear">
+
+            <figcaption>A pretty good-looking gear if I do say so myself</figcaption>
+            
+
         
         </div>
     </main>
