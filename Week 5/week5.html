@@ -27,28 +27,88 @@
             <h3>Photogrammetry scanning</h3>
             <p>Polycam was an interesting tool shown to us by the Professor. He told us how it can help us scan everyday objects and items, and it seemed to be an interesting method to to quickly scan objects</p>
             <p>Because it seemed to intuitive to use, I gathered a few of my friends and we scanned each other. Literally. Using PolyCam, one of us stood as still as possible and another would walk around us and take ~100 photographs using PolyCam</p>
-            <p>Using the in-built Polycam software, it then patched everything together, and voila! We got a 3D scanned version of me!</p>
+            <p>Using the in-built Polycam software, it then joined everything together, and voila! We got a 3D scanned version of me!</p>
             <figure>
                 <img src="Joey3d.png" alt="Me as a 3D Model">
                 <p class="image-caption">Me as a 3D Model in Polycam</p>
             </figure>
-            <p>However, this was not the only step – I was not done just after this. Polycam had missed out on some aspects while scanning everything: My hat was messed up, one of my shoes was completely missing, and there were remnants of the stand I was resting my hand on while getting the scan taken</p>
-            <p>(and quite annoyingly), PolyCam's free version did not let me export the scan into a .stl or .obj file (the two formats that could have been read by Fusion 360) – it only let me download a '.glb' file. As a result, I couldn't directly import my scan into Fusion, and instead had to make use of... <strong>BLENDER</strong>!</p>
-            <p>Blender seemed pretty straightforward, but I had to go deep into the documentation to understand how I could patch up the issues I mentioned above. Since I knew I had to export this file as an STL (as blender could not export native Fusion 360 files like .f3d), I decided to mess around with Blender and try to do the majority of my 3D object editing here this time</p>
+            <p>However, this was not the only step – I was not done just after this. Polycam had messed up one aspects while scanning everything: There were remnants of the tripod stands I was resting my hand on while getting the scan taken</p>
+           
+            <figure>
+                <img src="tripod_issues.png" alt="Visible tripod artifacts">
+                <p class="image-caption">The visible tripod remnants</p>
+            </figure>
+
+            <p>Additionally, (and quite annoyingly) PolyCam's free version did not let me export the scan into a .stl or .obj file (the two formats that could have been read by Fusion 360) – it only let me download a '.glb' file. As a result, I couldn't directly import my scan into Fusion, and instead had to make use of... <strong>BLENDER</strong>!</p>
+            <p>Blender seemed pretty straightforward, but I had to go somewhat into the documentation to understand how I could patch up the issues I mentioned above. Since I knew I had to export this file as an STL (as blender could not export native Fusion 360 files like .f3d), I decided to mess around with Blender and try to do the majority of my 3D object editing here this time</p>
 
             <figure>
                 <img src="blender_import.png" alt="Importing GLB file into Blender">
                 <p class="image-caption">Importing the .glb file into Blender</p>
             </figure>
 
-            
+            <p>I searched up a few basic Blender tutorials and understood some low-level tools that I could quickly learn. For the context of editing the 3D model of myself, Mesh, extrude to Cursor, and the disolve options seemed particularly useful.</p>
+
+            <p>First, I selected the parts of my hands that were an issue, and then I dissolved them:</p>
+            <figure>
+                <img src="hand_select.png" alt="Selecting problematic hand areas">
+                <p class="image-caption">Selecting the problematic areas of my hand</p>
+            </figure>
+
+            <figure>
+                <img src="dissolve_hand.png" alt="Using dissolve function">
+                <p class="image-caption">Using Blender's dissolve function to remove the artifacts</p>
+            </figure>
+
+            <figure>
+                <img src="fixed_hand.png" alt="Hand after fixes">
+                <p class="image-caption">The hand after removing the tripod artifacts</p>
+            </figure>
             <figure>
                 <img src="scan_result.jpg" alt="3D Scan Result">
                 <p class="image-caption">The resulting 3D scan</p>
             </figure>
 
-            <p>Some challenges I encountered were...</p>
+            <p>I could then export this file from Blender as a .stl and into Fusion if I needed to</p>
+
+            <h3>Some lessons using Polycam</h3>
+            <ul>
+                <li>Use objects that have a natural color difference to them: Polycam is not able to pick up subtle surface differences as well as the human eye, so it is best to use objects that have a high variation in color and texture</li>
+                <li>The object being scanned needs to remain really still: when we were scanning human subjects, we ended up messing up quite a few times because either someone's hand or face moved, messing with Polycams references and hence messing up the patching together. Some faces were quite warped and had werid depths to them becauase even small minor movements messed Polycam up</li>
+                <li>Good lighting conditions: Poor lighting made it difficult for Polycam to accurately capture details and textures, leading to some weird scans in the beginning</li>
+                <li>Take as many photos as possible: Polycam's software does a good job in telling you when and where to take the photo, but its a good practice to take as many as possible so as to enable extra reference points for the software to work with than to realize later you're missing crucial angles</li>
+                <li>Consistent distance: Moving too close or too far while taking photos confuses the software's ability to stitch the images together properly</li>
+            </ul>
+
+            <h3>3D Scanning pt 2: Messing around with Revopoint</h3>
+            <p>After experimenting with Polycam, I also got the chance to try out the Revopoint 3D scanner. This was a more professional-grade scanning tool compared to the phone-based Polycam app.</p>
+
+            <figure>
+                <img src="revopoint.jpg" alt="Messing around with the scanner">
+                <p class="image-caption">Messing around with the Revopoint Scanner</p>
+            </figure>
+
+            <p>The Revopoint scanner uses some form of LIDAR, which was different from Polycam's photogrammetry approach (where it built 3D models from multiple 2D images). Additionally, I was able to see real-time feedback on how my scan was going while I was scanning it</p>
+
+            <p>I first tried scanning a pair of sunglasses with the Revopoint scanner, but this proved to be quite challenging. The transparent and reflective nature of the lenses made it nearly impossible for the scanner to properly capture the surface. The scanner would either completely miss parts of the lenses or create distorted geometry where the reflections were most prominent. I even tried to add circular reference stickers onto the lenses to see if it could help, but then the scanner just picked those up.</p>
+
+            <p>After the unsuccessful attempt with the sunglasses, I decided to try scanning my hat instead. While this seemed like it would be an easier object to scan at first, it came with its own set of challenges. The fabric of the hat made it difficult for the scanner to pick up some of the details, and it ended up being quite noisy in some places.</p>
+
+            <figure>
+                <img src="hat_scan.jpg" alt="Attempting to scan a baseball cap">
+                <p class="image-caption">Attempting to scan my baseball cap - notice the missing sections where the scanner struggled with the dark fabric</p>
+            </figure>
+
+
+            <p>Some key differences I noticed between Revopoint and Polycam:</p>
+            <ul>
+                <li>Higher accuracy: The Revopoint scanner could capture much finer details</li>
+                <li>Real-time feedback: You can see the 3D model being built in real-time as you scan</li>
+                <li>Less dependent on pristine lighting: The structured light technology works better in various lighting conditions since you could mess around with some of the exposure settings in the software directly</li>
+            </ul>
         </div>
+
+
     </main>
 
     <a href="../index.html" class="back-btn">Back to Home</a>
