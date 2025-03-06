@@ -1,9 +1,9 @@
 const weeks = [
     { number: 1, image: 'Week 1/week1.jpg', description: 'Website Creation & Ideas for the Final Project' },
     { number: 2, image: 'Week 2/week2.jpg', description: 'Computer-Aided Design' },
-    { number: 3, image: 'Week 3/week3.jpg', description: '3D Printing and Scanning' },
+    { number: 3, image: 'Week 3/week3.jpg', description: 'Hand Tools & Fabrication' },
     { number: 4, image: 'Week 4/week4.jpg', description: 'Electronic Input Devices' },
-    { number: 5, image: 'Week 5/week5.jpg', description: 'Electronic Output Devices' },
+    { number: 5, image: 'Week 5/week5.jpg', description: '3D Printing and Scanning' },
     { number: 6, image: 'Week 6/week6.jpg', description: 'CNC Milling' },
     { number: 7, image: 'Week 7/week7.jpg', description: 'Laser Cutting' },
     { number: 8, image: 'Week 8/week8.jpg', description: 'Embedded Programming' },
