@@ -21,16 +21,27 @@
          <!-- Add this new content box after the gear section -->
          <div class="content-box">
             <h2>Part 1: 3D Scanning</h2>
-            <p>For this section, we explored 3D scanning technology and its applications. I decided to scan...</p>
+            <p>Amongst the variety of tools we explored today, one of them included using 3D scanners to scan objects around us</p>
+            <p>There were two tools I learnt how to use: photogrammetry applications (more specifically, PolyCam), and more larger handheld LIDAR devices (RevoPoint)</p>
             
-            <!-- Add your scanning content here -->
+            <h3>Photogrammetry scanning</h3>
+            <p>Polycam was an interesting tool shown to us by the Professor. He told us how it can help us scan everyday objects and items, and it seemed to be an interesting method to to quickly scan objects</p>
+            <p>Because it seemed to intuitive to use, I gathered a few of my friends and we scanned each other. Literally. Using PolyCam, one of us stood as still as possible and another would walk around us and take ~100 photographs using PolyCam</p>
+            <p>Using the in-built Polycam software, it then patched everything together, and voila! We got a 3D scanned version of me!</p>
             <figure>
-                <img src="scan1.jpg" alt="3D Scanning Setup">
-                <p class="image-caption">Setting up the 3D scanner</p>
+                <img src="Joey3d.png" alt="Me as a 3D Model">
+                <p class="image-caption">Me as a 3D Model in Polycam</p>
+            </figure>
+            <p>However, this was not the only step – I was not done just after this. Polycam had missed out on some aspects while scanning everything: My hat was messed up, one of my shoes was completely missing, and there were remnants of the stand I was resting my hand on while getting the scan taken</p>
+            <p>(and quite annoyingly), PolyCam's free version did not let me export the scan into a .stl or .obj file (the two formats that could have been read by Fusion 360) – it only let me download a '.glb' file. As a result, I couldn't directly import my scan into Fusion, and instead had to make use of... <strong>BLENDER</strong>!</p>
+            <p>Blender seemed pretty straightforward, but I had to go deep into the documentation to understand how I could patch up the issues I mentioned above. Since I knew I had to export this file as an STL (as blender could not export native Fusion 360 files like .f3d), I decided to mess around with Blender and try to do the majority of my 3D object editing here this time</p>
+
+            <figure>
+                <img src="blender_import.png" alt="Importing GLB file into Blender">
+                <p class="image-caption">Importing the .glb file into Blender</p>
             </figure>
 
-            <p>The process involved...</p>
-
+            
             <figure>
                 <img src="scan_result.jpg" alt="3D Scan Result">
                 <p class="image-caption">The resulting 3D scan</p>
