@@ -101,6 +101,15 @@
     margin-top: 1.5rem;
 }
 
+/* Add this to your existing styles */
+.content-box h3 {
+    color: #333333;
+    font-size: 1.4rem;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
 /* Responsive design */
 @media (max-width: 768px) {
     .week-content {
