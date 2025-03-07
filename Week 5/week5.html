@@ -72,7 +72,7 @@
             <p>I could then export this file from Blender as a .stl and into Fusion if I needed to. I printed this too (see below)!</p>
             <p>Here's the 3D model if you'd like to play around with it too:</p>
             <div class="model-viewer-container" style="width: 100%; height: 500px; margin: 20px 0;">
-                <iframe id="vs_iframe" src="https://www.viewstl.com/?embedded" style="border:0;margin:0;width:100%;height:100%;"></iframe>
+                <iframe id="vs_iframe" src="https://www.viewstl.com/?embedded&url=https%3A%2F%2Fgithub.com%2Fhiteyjit%2FPS70%2Fblob%2Fmain%2FWeek%25205%2Fjoey_scan.stl" style="border:0;margin:0;width:100%;height:100%;"></iframe>
             </div>
             <div style="text-align: center; margin: 20px 0;">
                 <a href="joey_scan.stl" download class="download-button" style="padding: 10px 20px; background-color: #4CAF50; color: white; text-decoration: none; border-radius: 5px;">
@@ -182,11 +182,187 @@
 
             <p>It seemed doable, so I hopped into Fusion to see what I could come up with</p>
 
+            <p>First, I created a basic sketch of what the chain's monomer would look like</p>
+            <div class="image-container">
+                <figure style="flex: 1;">
+                    <img src="chainshape.png" alt="Sketch of the chain monomer" style="width: 60%; margin: 0 auto; display: block;">
+                    <p class="image-caption">Basic sketch of the chain monomer</p>
+                </figure>
+            </div>
 
+            <p>Then, I extruded this into a thickness that could theoretically be sturdy enough:</p>
+            <div class="image-container">
+                <figure style="flex: 1;">
+                    <img src="extruded.png" alt="Extruded chain monomer" style="width: 60%; margin: 0 auto; display: block;">
+                    <p class="image-caption">Extruded chain unit</p>
+                </figure>
+            </div>
+            <p>Then, I made a copy of this unit and rotated it by 90˚. I brought both shapes together and ensured that they intersected with each other:</p>
+            <div class="image-container">
+                <figure style="flex: 1;">
+                    <img src="linked.png" alt="Two chain units rotated and intersecting" style="width: 60%; margin: 0 auto; display: block;">
+                    <p class="image-caption">Two chain units intersecting</p>
+                </figure>
+            </div>
+
+            <p>Then, I used made a copy of these two units and did the same thing where I brought the new 2 units and intersected them while ensuring their walls were not fusing together:</p>
+            <div class="image-container">
+                <figure style="flex: 1;">
+                    <img src="morelinks.png" alt="Four chain units linked together" style="width: 60%; margin: 0 auto; display: block;">
+                    <p class="image-caption">Four chain units linked together</p>
+                </figure>
+            </div>
+
+            <p>Using the Rectangular Pattern tool, I created many more units of these, and ensured they joined well together. In order to ensure they joined while not merging their walls, I had to rotate some of them slightly:</p>
+            <div class="image-container">
+                <figure style="flex: 1;">
+                    <img src="pattern.png" alt="Chain units created using rectangular pattern" style="width: 60%; margin: 0 auto; display: block;">
+                    <p class="image-caption">Chain units created using Rectangular Pattern Tool</p>
+                </figure>
+                <figure style="flex: 1;">
+                    <img src="joined.png" alt="Chain units linked together in a pattern" style="width: 60%; margin: 0 auto; display: block;">
+                    <p class="image-caption">Chain units linked together</p>
+                </figure>
+            </div>
+
+            <p>Once the main chain was done, all I had to do was create some basic rectangles to finish it off. I created two identical rectangles to attach the ends of the chain to, and created a cube with a hole in it that I filleted the edges off to make it into a donut/sphere shape.</p>
+            
+            <p>After all that, I joined them onto the chain, and made sure that the hole of my donut sphere was not fused with any of the chain units</p>
+
+            <div class="image-container">
+                <figure style="flex: 1;">
+                    <img src="extramods.png" alt="Final chain design with end pieces and sphere" style="width: 60%; margin: 0 auto; display: block;">
+                    <p class="image-caption">Final chain design with attachments</p>
+                </figure>
+            </div>
+
+            <p>Importing it into PrusaSlicer was pretty straighforward, and I didn't have to mess around much with the settings. What appeared to work for me was the "0.15mm SPEED" preset.</p>
+            <p>I had to adjust the support materials slightly, and I ended up choosing the "Everywhere" option, where the generated supports were the ones attached to the base plate of the 3D printer. This was a slight mistake, since it generated a LOT of supports (almost 40% of the print), but it wasn't anything I couldn't evenetually remove. It just took a lot of time :,) </p>
+            
+            <div class="image-container">
+                <figure style="flex: 1;">
+                    <img src="prusa.png" alt="Chain model in PrusaSlicer" style="width: 60%; margin: 0 auto; display: block;">
+                    <p class="image-caption">Chain model in PrusaSlicer</p>
+                </figure>
+            </div>
+
+            <h3>And now, off to the 3D Printer!</h3>
+            <div class="image-container">
+                <figure style="flex: 1;">
+                    <img src="prusa.gif" alt="3D printer in action" style="width: 60%; margin: 0 auto; display: block;">
+                    <p class="image-caption">3D printer in action (and a surprise print too!)</p>
+                </figure>
+            </div>
+
+            <h3>The Result</h3>
+            <p>After about 4.5hrs, the prints were complete! I printed the ball-chain model, and a small version of the scan of myself from earlier! Both came out pretty well, but there were really a LOT of supports.</p>
+            <div class="image-container">
+                <figure style="flex: 1;">
+                    <img src="support1.jpg" alt="Chain model with supports still attached" style="width: 60%; margin: 0 auto; display: block;">
+                    <p class="image-caption">Chain model with supports</p>
+                </figure>
+                <figure style="flex: 1;">
+                    <img src="support2.jpg" alt="Mini figure model with supports still attached" style="width: 60%; margin: 0 auto; display: block;">
+                    <p class="image-caption">Mini figure with supports</p>
+                </figure>
+            </div>
+            <p>Although it was pretty easy getting the supports off my mini action-figure, the real task was getting them off the complex chain-ball print. I had to be careful to get the supports off from the print without breaking the actual chain.</p>
+            <p>Prof. Melenbrink's advice ended up working best: I used a flat-head screwdriver and just broke as many of the supports as I could. Eventually, I was able to use the screwdriver to get in the space between where the supports were attached to the model, and then they easily started coming off: </p>
+            <div class="image-container">
+                <figure style="flex: 1;">
+                    <img src="fixing.gif" alt="Removing supports from the chain model" style="width: 60%; margin: 0 auto; display: block;">
+                    <p class="image-caption">Removing supports from the chain model (shoutout to Wyatt for the idea of taking a video like this)</p>
+                </figure>
+            </div>
+
+            <h3>The Finished Products</h3>
+            <div class="image-container">
+                <figure style="flex: 2;">
+                    <img src="final1.jpg" alt="Final mini action figure print" style="width: 50%; margin: 0 auto; display: block;">
+                    <p class="image-caption">Final mini action figure print</p>
+                </figure>
+                <figure style="flex: 2;">
+                    <img src="chain.jpg" alt="Final chain model in action" style="width: 50%; margin: 0 auto; display: block;">
+                    <p class="image-caption">Final chain model in action</p>
+                </figure>
+            </div>
+
+            <div class="image-container">
+                <figure style="flex: 3;">
+                    <img src="chain.gif" alt="The chain-ball in action" style="width: 60%; margin: 0 auto; display: block;">
+                    <p class="image-caption">The chain ball in action!</p>
+                </figure>
+            </div>
 
         </div>
     </main>
 
+    <main class="week-content fade-in-delayed">
+        <div class="content-box">
+        <h2>Part 3: Final Project Planning</h2>
+        <p>I mainly wanted to think about the major components I would need for my Electric Skateboard. I was chatting with Prof. Melenbrink about this a few days ago, and he showed me a brushless motor system that appeared to connect to a regular drill battery. Since these batteries could likely power one motor best, I have to figure out a way to turn 2 wheels at a time with it.</p>
+        
+        <div class="image-container">
+            <figure>
+                <img src="trucks.png" alt="Basic board design" style="width: 60%; margin: 0 auto; display: block;">
+                <p class="image-caption">A basic motor-attachmenet system under my skateboard (the squares are wheels)</p>
+            </figure>
+        </div>
+
+        <p>Although this is pretty basic, it revolves around the sort of idea I wanted to have: a singular motor system mounted to the board that could then have a gear/axle connection system to power the wheels.</p>
+        <p>From my undersanding, most of the basic materials could be available in-house. However, some of the main components, i.e the things that would actually power the skateboard, would need to be sourced externally</p>
+        <p>Here's a rundown of what I could anticipate</p>
+
+        <table>
+            <thead>
+              <tr>
+                <th>Component</th>
+                <th>Price</th>
+                <th>Source & Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Skateboard Base</td>
+                <td>N/A</td>
+                <td>Will be made out of wood: can be sourced from within the PS70 lab using the woodcutter & gluing multiple cuts together</td>
+              </tr>
+              <tr>
+                <td>Trucks and Wheels</td>
+                <td>~$27.50</td>
+                <td>Amazon; Will need to be modified to fit with the brushless Motor</td>
+              </tr>
+              <tr>
+                <td>Brushless Motor, ESC System and 1x Wheel kit</td>
+                <td>$80.00</td>
+                <td>Prof. Melenbrink; He had mentioned a sourcer of these parts that could provide enough needed for one skateboard per kit</td>
+              </tr>
+              <tr>
+                <td>Remote Control Tx & Rx</td>
+                <td>$20.00</td>
+                <td>Amazon; But some of these parts are likely to be available in the PS70 lab as well. A transmitter will be connected to a glove system (below) and will be recieved by a microcontroller that can then feed into the ESC from above. </td>
+              </tr>
+              <tr>
+                <td>Stretch sensors for globe</td>
+                <td>$10.00/sensor</td>
+                <td>Microcenter; These could be directly sewn onto the glove and attached to a microncontroller with a transmitter that can send signals based on how much the hand is clenched or not. These sensors, however,are likely to be found in the lab too.</td>
+              </tr>
+
+              <tr>
+                <td>Microcontrollers</td>
+                <td>N/A</td>
+                <td>ES32s & Arduinos available in the PS70 Lab.</td>
+              </tr>
+              <tr>
+                <td>Axles & Gears</td>
+                <td>N/A</td>
+                <td>Can be fabricated in the PS70 Lab. These will likely need to be designed and fitted according to the specification of motor and wheels that will be obtained.</td>
+              </tr>
+            </tbody>
+          </table>
+
+        </div>
+    </main>
     <a href="../index.html" class="back-btn">Back to Home</a>
 </body>
 </html> 
