@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="../styles.css">
     <link rel="stylesheet" href="../week-styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Raleway:wght@300;400;600&display=swap" rel="stylesheet">
+    <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+    <script nomodule src="https://unpkg.com/@google/model-viewer/dist/model-viewer-legacy.js"></script>
 </head>
 <body>
     <header class="week-header fade-in">
@@ -24,7 +26,7 @@
             <p>Amongst the variety of tools we explored today, one of them included using 3D scanners to scan objects around us</p>
             <p>There were two tools I learnt how to use: photogrammetry applications (more specifically, PolyCam), and more larger handheld LIDAR devices (RevoPoint)</p>
             
-            <h3>Photogrammetry scanning</h3>
+            <h3>Photogrammetry</h3>
             <p>Polycam was an interesting tool shown to us by the Professor. He told us how it can help us scan everyday objects and items, and it seemed to be an interesting method to to quickly scan objects</p>
             <p>Because it seemed to intuitive to use, I gathered a few of my friends and we scanned each other. Literally. Using PolyCam, one of us stood as still as possible and another would walk around us and take ~100 photographs using PolyCam</p>
             <p>Using the in-built Polycam software, it then joined everything together, and voila! We got a 3D scanned version of me!</p>
@@ -35,43 +37,50 @@
             <p>However, this was not the only step – I was not done just after this. Polycam had messed up one aspects while scanning everything: There were remnants of the tripod stands I was resting my hand on while getting the scan taken</p>
            
             <figure>
-                <img src="tripod_issues.png" alt="Visible tripod artifacts">
+                <img src="tripod_issue.png" alt="Visible tripod artifacts">
                 <p class="image-caption">The visible tripod remnants</p>
             </figure>
 
-            <p>Additionally, (and quite annoyingly) PolyCam's free version did not let me export the scan into a .stl or .obj file (the two formats that could have been read by Fusion 360) – it only let me download a '.glb' file. As a result, I couldn't directly import my scan into Fusion, and instead had to make use of... <strong>BLENDER</strong>!</p>
-            <p>Blender seemed pretty straightforward, but I had to go somewhat into the documentation to understand how I could patch up the issues I mentioned above. Since I knew I had to export this file as an STL (as blender could not export native Fusion 360 files like .f3d), I decided to mess around with Blender and try to do the majority of my 3D object editing here this time</p>
+            <p>Additionally, (and quite annoyingly) PolyCam's free version did not let me export the scan into a .stl or .obj file (the two formats that could have been read by Fusion 360) – it only let me download a '.glb' file. As a result, I couldn't directly import my scan into Fusion, and instead had to make use of... <bold>BLENDER</bold>!</p>
+            <p>Blender seemed pretty straightforward, but I had to go somewhat into the documentation to understand how I could patch up the issue. Since I knew I had to export this file as an STL (as blender could not export native Fusion 360 files like .f3d), I decided to mess around with Blender and try to do the majority of my 3D object editing here this time.</p>
 
             <figure>
-                <img src="blender_import.png" alt="Importing GLB file into Blender">
+                <img src="blender.gif" alt="Importing GLB file into Blender">
                 <p class="image-caption">Importing the .glb file into Blender</p>
             </figure>
 
             <p>I searched up a few basic Blender tutorials and understood some low-level tools that I could quickly learn. For the context of editing the 3D model of myself, Mesh, extrude to Cursor, and the disolve options seemed particularly useful.</p>
 
             <p>First, I selected the parts of my hands that were an issue, and then I dissolved them:</p>
-            <figure>
-                <img src="hand_select.png" alt="Selecting problematic hand areas">
-                <p class="image-caption">Selecting the problematic areas of my hand</p>
-            </figure>
+            <div style="display: flex; gap: 20px;">
+                <figure style="flex: 1;">
+                    <img src="selecting.png" alt="Selecting problematic hand areas">
+                    <p class="image-caption">Selecting the problematic areas of my hand</p>
+                </figure>
 
-            <figure>
-                <img src="dissolve_hand.png" alt="Using dissolve function">
-                <p class="image-caption">Using Blender's dissolve function to remove the artifacts</p>
-            </figure>
+                <figure style="flex: 1;">
+                    <img src="dissolve.png" alt="Using dissolve function">
+                    <p class="image-caption">Using Blender's dissolve function to remove the artifacts</p>
+                </figure>
+            </div>
 
-            <figure>
-                <img src="fixed_hand.png" alt="Hand after fixes">
+            <figure style="width: 60%; margin: 0 auto;">
+                <img src="cleaned.png" alt="Hand after fixes">
                 <p class="image-caption">The hand after removing the tripod artifacts</p>
             </figure>
-            <figure>
-                <img src="scan_result.jpg" alt="3D Scan Result">
-                <p class="image-caption">The resulting 3D scan</p>
-            </figure>
+    
+            <p>I could then export this file from Blender as a .stl and into Fusion if I needed to. I printed this too (see below)!</p>
+            <p>Here's the 3D model if you'd like to play around with it too:</p>
+            <div class="model-viewer-container" style="width: 100%; height: 500px; margin: 20px 0;">
+                <iframe id="vs_iframe" src="https://www.viewstl.com/?embedded" style="border:0;margin:0;width:100%;height:100%;"></iframe>
+            </div>
+            <div style="text-align: center; margin: 20px 0;">
+                <a href="joey_scan.stl" download class="download-button" style="padding: 10px 20px; background-color: #4CAF50; color: white; text-decoration: none; border-radius: 5px;">
+                    Download 3D Model (.stl)
+                </a>
+            </div>
 
-            <p>I could then export this file from Blender as a .stl and into Fusion if I needed to.</p>
-
-            <h2>Some lessons using Polycam</h2>
+            <h3>Some learnings after using Polycam</h3>
             <ul>
                 <li>Use objects that have a natural color difference to them: Polycam is not able to pick up subtle surface differences as well as the human eye, so it is best to use objects that have a high variation in color and texture</li>
                 <li>The object being scanned needs to remain really still: when we were scanning human subjects, we ended up messing up quite a few times because either someone's hand or face moved, messing with Polycams references and hence messing up the patching together. Some faces were quite warped and had werid depths to them becauase even small minor movements messed Polycam up</li>
@@ -83,32 +92,99 @@
             <h2>3D Scanning pt 2: Messing around with Revopoint</h2>
             <p>After experimenting with Polycam, I also got the chance to try out the Revopoint 3D scanner. This was a more professional-grade scanning tool compared to the phone-based Polycam app.</p>
 
-            <figure>
-                <img src="revopoint.jpg" alt="Messing around with the scanner">
+            <figure style="text-align: center;">
+                <img src="revopoint.jpeg" alt="Messing around with the scanner" style="width: 80%; margin: 0 auto; display: block;">
                 <p class="image-caption">Messing around with the Revopoint Scanner</p>
             </figure>
 
-            <p>The Revopoint scanner uses some form of LIDAR, which was different from Polycam's photogrammetry approach (where it built 3D models from multiple 2D images). Additionally, I was able to see real-time feedback on how my scan was going while I was scanning it</p>
+            <p>I believe the Revopoint scanner uses some form of LIDAR, which was different from Polycam's photogrammetry approach (where it built 3D models from multiple 2D images). Additionally, I was able to see real-time feedback on how my scan was going while I was scanning it.</p>
 
-            <p>I first tried scanning a pair of sunglasses with the Revopoint scanner, but this proved to be quite challenging. The transparent and reflective nature of the lenses made it nearly impossible for the scanner to properly capture the surface. The scanner would either completely miss parts of the lenses or create distorted geometry where the reflections were most prominent. I even tried to add circular reference stickers onto the lenses to see if it could help, but then the scanner just picked those up.</p>
+            <p>I first tried scanning a pair of sunglasses with the Revopoint scanner:</p>
 
-            <p>After the unsuccessful attempt with the sunglasses, I decided to try scanning my hat instead. While this seemed like it would be an easier object to scan at first, it came with its own set of challenges. The fabric of the hat made it difficult for the scanner to pick up some of the details, and it ended up being quite noisy in some places.</p>
+            <div class="image-container">
+                <figure style="flex: 1;">
+                    <img src="glasses.jpg" alt="Attempting to scan sunglasses" style="width: 80%; margin: 0 auto; display: block;">
+                    <p class="image-caption">Attempting to scan sunglasses</p>
+                </figure>
+            </div>
 
-            <figure>
-                <img src="hat_scan.jpg" alt="Attempting to scan a baseball cap">
-                <p class="image-caption">Attempting to scan my baseball cap - notice the missing sections where the scanner struggled with the dark fabric</p>
-            </figure>
+            <p>But this proved to be quite challenging. The transparent and reflective nature of the lenses made it nearly impossible for the scanner to properly capture the surface. The scanner would either completely miss parts of the lenses or create distorted geometry where the reflections were most prominent. I even tried to add circular reference stickers onto the lenses to see if it could help, but then the scanner just picked those up.</p>
+            
+            <p>After the unsuccessful attempt with the sunglasses, I decided to try scanning my hat instead. While this seemed like it would be an easier object to scan at first, it came with its own set of challenges.</p>
+
+            <div class="image-container">
+                <figure style="flex: 1;">
+                    <img src="hat1.jpg" alt="First attempt to scan my cap" style="width: 80%; margin: 0 auto; display: block;">
+                    <p class="image-caption">First attempt to scan my cap</p>
+                </figure>
+            </div>
+
+            
+
+            <p>As I tried this, I realized that it was quite difficult to get a real '3d' scan of the hat. Either I could only scan the top or only the bottom. If I tried combining the two scans in the Revopoint software, it just wouldn't work.</p>
+            <p>Additionally, even when I tried scanning one side at a time, the scanner struggled with picking up some of the details. I'm guessing this was since the background behind the hat matched its white color. Regardless, sometimes the scans were quite noisy.</p>
 
 
+            <div style="display: flex; gap: 20px;">
+                <figure style="flex: 1;">
+                    <img src="hatscan.jpg" alt="Noisy scan of the hat">
+                    <p class="image-caption">Noisy scan of the hat</p>
+                </figure>
+
+                <figure style="flex: 1;">
+                    <img src="hatcombine.jpg" alt="Attempting to combine two hat scans">
+                    <p class="image-caption">Attempting to combine top and bottom scans of the hat</p>
+                </figure>
+            </div>
+
+            <p>When this didn't end up working, I tried to come up with a way to scan the hat's sides simulataneously instead of having to take individual scans.<p>
+            
+            <div class="image-container">
+                <figure style="flex: 1;">
+                    <img src="hat2.jpg" alt="First attempt to scan my cap" style="width: 80%; margin: 0 auto; display: block;">
+                    <p class="image-caption">My solution: spinning the had while it is suspended!</p>
+                </figure>
+            </div>     
+
+            <p>This gave somewhat decent results, but there was still a lot of denoising necessary. In the end, I wasn't able to get a fully-perfect scan of my hat, but at least I got something!</p>
+
+            <div class="image-container">
+                <figure style="flex: 1;">
+                    <img src="hatscan2.png" alt="The best scan of my hat I could get" style="width: 80%; margin: 0 auto; display: block;">
+                    <p class="image-caption">The best scan of my hat I could get</p>
+                </figure>
+            </div> 
+
+            
             <p>Some key differences I noticed between Revopoint and Polycam:</p>
             <ul>
-                <li>Higher accuracy: The Revopoint scanner could capture much finer details</li>
-                <li>Real-time feedback: You can see the 3D model being built in real-time as you scan</li>
-                <li>Less dependent on pristine lighting: The structured light technology works better in various lighting conditions since you could mess around with some of the exposure settings in the software directly</li>
+                <li>The Revopoint scanner could capture much finer details</li>
+                <li>I could see the 3D model being built in real-time as you scan</li>
+                <li>I could mess around with some of the exposure settings in the software directly, which made some of the depth-scanning a little easier</li>
             </ul>
         </div>
+    </main>
+
+    <main class="week-content fade-in-delayed">
+        <div class="content-box">
+            <h2>Part 2: 3D Printing</h2>
+            <p>For this, I wanted to 3D print something I couldn't have made through either the CNC machine or the laser cutter.</p>
+        
+            <p>After discussing some ideas with Bobby, I was conflicted between designing either a structure that could snap together, or create an interlinking system that is already joined once it is 3D printed.</p>
+            <p>Eventually (and mainly because I wanted a cool fidget toy), I decided to make a chain that has a ball on it that can roll around but always stay on the chain.</p>
+            <p>This was my idea:</p>
+            <div class="image-container">
+                <figure style="flex: 1;">
+                    <img src="idea.jpg" alt="Sketch of my chain idea" style="width: 60%; margin: 0 auto; display: block;">
+                    <p class="image-caption">My initial sketch of the chain idea</p>
+                </figure>
+            </div>
+
+            <p>It seemed doable, so I hopped into Fusion to see what I could come up with</p>
 
 
+
+        </div>
     </main>
 
     <a href="../index.html" class="back-btn">Back to Home</a>
