@@ -3,20 +3,135 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Week 7 - PS70 Project</title>
+    <title>Week 7 - MVP</title>
     <link rel="stylesheet" href="../styles.css">
     <link rel="stylesheet" href="../week-styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Raleway:wght@300;400;600&display=swap" rel="stylesheet">
+    <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+    <script nomodule src="https://unpkg.com/@google/model-viewer/dist/model-viewer-legacy.js"></script>
 </head>
 <body>
     <header class="week-header fade-in">
-        <h1>Week 7</h1>
+        <h1>Week 7: Building a Minimum Viable Product</h1>
     </header>
     
     <div class="week-description fade-in">
-        <h3>Check back here for more updates!</h3>
+        <h3>This week was intense. I needed to show my glove could theoretically control the skateboard with my fingers' flexion and extension acting as the variable input. I had a few ideas, and even though it seemed simple while ideating, there were quite a few challenges.</h3>
     </div>
 
+    <main class="week-content fade-in-delayed">
+         
+         <div class="content-box">
+            <h2>Part 1: Understanding Flex Sensing</h2>
+            <p>To create a glove that could detect finger movements, I first needed to understand how flex sensors actually work. Rather than just buying pre-made flex sensors, I wanted to break down their function into the most basic components to see if I could create something more integrated into the glove itself.</p>
+
+            <figure>
+                <img src="allsensors.jpg" alt="Various flex sensing approaches">
+                <p class="image-caption">Different approaches to flex sensing that I researched</p>
+            </figure>
+
+            <p>My research led me deep into material science documentation, where I discovered that the key to flex sensing lies in how certain materials change their electrical properties when deformed. Particularly fascinating was learning about how carbon atoms in certain materials can physically shift within their crystal lattice structure when bent, directly affecting the material's conductivity.</p>
+
+            <p>This understanding led me to discover Velostat, a material that exhibits interesting pressure-sensitive properties. When sandwiched between conductive materials like copper strips, it creates a capacitive effect that changes based on deformation.</p>
+
+            <figure>
+                <img src="velostat1.jpg" alt="Initial Velostat testing">
+                <p class="image-caption">First experiments with Velostat material</p>
+            </figure>
+
+            <p>I began testing different configurations of copper strips with Velostat to see how I could optimize the sensing capability:</p>
+
+            <div style="display: flex; gap: 20px;">
+                <figure style="flex: 1;">
+                    <img src="velostat2.jpg" alt="Copper strip configuration">
+                    <p class="image-caption">Testing different copper strip patterns</p>
+                </figure>
+
+                <figure style="flex: 1;">
+                    <img src="velostat3.jpg" alt="Final sensor prototype">
+                    <p class="image-caption">Early prototype of the Velostat-based flex sensor</p>
+                </figure>
+            </div>
+
+            <p>This exploration has completely changed my approach to the glove design. Instead of creating separate sensor components that would need to be attached to a glove, I'm now working on incorporating these materials directly into the fabric of the glove. The goal is to create a glove with inherent sensing capabilities - where the material itself acts as the sensor rather than having external components attached to it.</p>
+
+            <p>This integrated approach could make the final product more durable, comfortable, and natural to use. It's exciting to think about creating something that feels less like a modified glove and more like a seamless piece of smart clothing.</p>
+        </div>
+    </main>
+
+    <main class="week-content fade-in-delayed">
+        <div class="content-box">
+            <h2>Part 2: Building the Electric Skateboard Control System</h2>
+            <p>This week was focused on getting the control system working for the electric skateboard. Unfortunately, I discovered the Velostat material too late to properly integrate it into the glove design. Instead, I had to pivot to using traditional flex sensors sewn onto a glove as a proof of concept.</p>
+
+            <div class="image-container">
+                <figure style="flex: 1;">
+                    <img src="glove.jpg" alt="Flex sensor glove prototype" style="width: 60%; margin: 0 auto; display: block;">
+                    <p class="image-caption">The prototype glove with flex sensors sewn in</p>
+                </figure>
+            </div>
+
+            <h3>Creating the Control Unit</h3>
+            <p>The next challenge was creating a control unit that could interface with the Electronic Speed Controller (ESC). The ESC acts as a middleman between the control signal and the motor, requiring a PWM signal input. While this seemed daunting at first, I discovered I could repurpose the Arduino's Servo.h library to generate the appropriate PWM signals.</p>
+
+            <p>Here's the code I used to control the ESC:</p>
+
+            [CODE BLOCK PLACEHOLDER]
+
+            <h3>The Mysterious Beeping</h3>
+            <p>However, I encountered a major obstacle that took nearly 5 hours to resolve. Every time I connected the ESC and Arduino to the motor, it would emit a persistent beeping sound with no clear cause.</p>
+
+            <div class="image-container">
+                <figure style="flex: 1;">
+                    <video width="100%" controls>
+                        <source src="issue1.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <p class="image-caption">Initial issue with the beeping motor</p>
+                </figure>
+            </div>
+
+            <div class="image-container">
+                <figure style="flex: 1;">
+                    <video width="100%" controls>
+                        <source src="issue2.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <p class="image-caption">Continued troubleshooting of the motor issue</p>
+                </figure>
+            </div>
+
+            <p>After extensive troubleshooting and research, I finally discovered that the ESC required calibration - something that wasn't mentioned in any of the documentation I had. The solution was surprisingly simple: I needed to add a 7-second delay in the Arduino's setup function to allow the ESC to properly calibrate itself.</p>
+
+            <p>Once this was implemented, the motor finally responded correctly to the control signals, marking a significant milestone in the project's development.</p>
+            <h3>Building the Board Frame</h3>
+            <p>With the control system working, the next step was to create the actual skateboard frame that would house all the components. I used the laser cutter to cut out the board shape from multiple layers of plywood that would then be laminated together.</p>
+
+            <div class="image-container">
+                <figure style="flex: 1;">
+                    <img src="boardshape.jpg" alt="Laser cut skateboard shape" style="width: 60%; margin: 0 auto; display: block;">
+                    <p class="image-caption">The laser cut skateboard frame pieces before assembly</p>
+                </figure>
+            </div>
+
+            <p>The board was designed with specific compartments to house the ESC, battery, and other electronic components. After cutting all the pieces, they were carefully glued and clamped together to create a solid, durable frame. The trucks and wheels were then mounted, with special modifications made to accommodate the motor mount system.</p>
+
+            <h3>Signal Analysis</h3>
+            <p>To ensure the control system was sending appropriate signals, I used an oscilloscope to analyze the PWM output from the Arduino to the ESC. This helped verify that the control signals were clean and properly formatted.</p>
+
+            <div class="image-container">
+                <figure style="flex: 1;">
+                    <img src="oscillo.jpg" alt="Oscilloscope reading of PWM signals" style="width: 60%; margin: 0 auto; display: block;">
+                    <p class="image-caption">Oscilloscope reading showing the PWM signals sent to the ESC</p>
+                </figure>
+            </div>
+
+            <p>The oscilloscope readings confirmed that the PWM signals were being generated correctly, with the proper frequency and duty cycle ranges required by the ESC. This validation was crucial in ensuring reliable control of the motor speed and response.</p>
+
+            <p>With all components tested and verified, the final assembly brought together the control glove, electronic systems, and the board itself into a functional electric skateboard prototype. While there's still room for refinement, particularly in the control interface, the basic system is now operational and responds well to input commands.</p>
+
+        </div>
+    </main>
     <a href="../index.html" class="back-btn">Back to Home</a>
 </body>
 </html> 
