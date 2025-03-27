@@ -26,7 +26,7 @@
             <p>To create a glove that could detect finger movements, I first needed to understand how flex sensors actually work. Rather than just buying pre-made flex sensors, I wanted to break down their function into the most basic components to see if I could create something more integrated into the glove itself.</p>
 
             <figure>
-                <img src="allsensors.jpg" alt="Various flex sensing approaches">
+                <img src="assets/allsensors.jpg" alt="Various flex sensing approaches">
                 <p class="image-caption">Different approaches to flex sensing that I researched</p>
             </figure>
 
@@ -35,7 +35,7 @@
             <p>This understanding led me to discover Velostat, a material that exhibits interesting pressure-sensitive properties. When sandwiched between conductive materials like copper strips, it creates a capacitive effect that changes based on deformation.</p>
 
             <figure>
-                <img src="velostat1.jpg" alt="Initial Velostat testing">
+                <img src="assets/velostat1.jpg" alt="Initial Velostat testing">
                 <p class="image-caption">First experiments with Velostat material</p>
             </figure>
 
@@ -43,12 +43,12 @@
 
             <div style="display: flex; gap: 20px;">
                 <figure style="flex: 1;">
-                    <img src="velostat2.jpg" alt="Copper strip configuration">
+                    <img src="assets/velostat2.jpg" alt="Copper strip configuration">
                     <p class="image-caption">Testing different copper strip patterns</p>
                 </figure>
 
                 <figure style="flex: 1;">
-                    <img src="velostat3.jpg" alt="Final sensor prototype">
+                    <img src="assets/velostat3.jpg" alt="Final sensor prototype">
                     <p class="image-caption">Early prototype of the Velostat-based flex sensor</p>
                 </figure>
             </div>
@@ -66,15 +66,13 @@
 
             <div class="image-container">
                 <figure style="flex: 1;">
-                    <img src="glove.jpg" alt="Flex sensor glove prototype" style="width: 60%; margin: 0 auto; display: block;">
+                    <img src="assets/glove.jpg" alt="Flex sensor glove prototype" style="width: 60%; margin: 0 auto; display: block;">
                     <p class="image-caption">The prototype glove with flex sensors sewn in</p>
                 </figure>
             </div>
 
             <h3>Creating the Control Unit</h3>
             <p>The next challenge was creating a control unit that could interface with the Electronic Speed Controller (ESC). The ESC acts as a middleman between the control signal and the motor, requiring a PWM signal input. While this seemed daunting at first, I discovered I could repurpose the Arduino's Servo.h library to generate the appropriate PWM signals.</p>
-
-            <p>Here's the code I used to control the ESC:</p>
 
             [CODE BLOCK PLACEHOLDER]
 
@@ -84,7 +82,7 @@
             <div class="image-container">
                 <figure style="flex: 1;">
                     <video width="100%" controls>
-                        <source src="issue1.mp4" type="video/mp4">
+                        <source src="assets/issue1.mp4" type="video/mp4">
                         Your browser does not support the video tag.
                     </video>
                     <p class="image-caption">Initial issue with the beeping motor</p>
@@ -94,7 +92,7 @@
             <div class="image-container">
                 <figure style="flex: 1;">
                     <video width="100%" controls>
-                        <source src="issue2.mp4" type="video/mp4">
+                        <source src="assets/issue2.mp4" type="video/mp4">
                         Your browser does not support the video tag.
                     </video>
                     <p class="image-caption">Continued troubleshooting of the motor issue</p>
@@ -109,7 +107,7 @@
 
             <div class="image-container">
                 <figure style="flex: 1;">
-                    <img src="boardshape.jpg" alt="Laser cut skateboard shape" style="width: 60%; margin: 0 auto; display: block;">
+                    <img src="assets/boardshape.jpg" alt="Laser cut skateboard shape" style="width: 60%; margin: 0 auto; display: block;">
                     <p class="image-caption">The laser cut skateboard frame pieces before assembly</p>
                 </figure>
             </div>
@@ -121,7 +119,7 @@
 
             <div class="image-container">
                 <figure style="flex: 1;">
-                    <img src="oscillo.jpg" alt="Oscilloscope reading of PWM signals" style="width: 60%; margin: 0 auto; display: block;">
+                    <img src="assets/oscillo.jpg" alt="Oscilloscope reading of PWM signals" style="width: 60%; margin: 0 auto; display: block;">
                     <p class="image-caption">Oscilloscope reading showing the PWM signals sent to the ESC</p>
                 </figure>
             </div>
