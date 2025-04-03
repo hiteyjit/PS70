@@ -14,8 +14,322 @@
     </header>
     
     <div class="week-description fade-in">
-        <h3>Check back here for more updates!</h3>
+        <h3>This week we learnt how to use the CNC milling machine and how to 3D mold objects!</h3>
     </div>
+
+    <main class="week-content fade-in-delayed">
+        <div class="content-box">
+            <h2>CNC Milling</h2>
+            <p>For this week, our assignment pertained to fabricating a 3D/ 2.5D design using the CNC milling machine.</p>
+            <p>After understanding how the machine worked, I understood the limitation of this machine (compared to some other milling machines I found online) in that this one can only shave off material working from the top of the material to the bottom. It cannot work in all 3 dimensions, but rather similar to a chisel, can remove parts of the material until a relative shape is achieved</p>
+            <p>After thinking about this a bunch, I realized that it would be quite fun to try and create a map of a significant location from my life.</p>
+            <p>I decided to create a 3D map of the region where, about 2 winters ago, I had gone skiing (Brauneck, Germany). But, this was no ordinary trip. I actually ended up getting stranded on one of these mountains as I was skiing down, and I had to eventually be rescued by mountain rescue! </p>
+            
+            <p>After trying to understand how I could go about this, I found that there was a few websites that could help me pinpoint and approximate the terrain features of the region. </p>
+            <p> The first one I used was Terrain2STL (https://jthatch.com/Terrain2STL/). I used google maps to find the coordinates of the region, and then messed around with some of the parameters on the website to try and get a good representation of the area. It seemed a little small, but I went with it anyway.</p>
+            <img src="terrain2stl.png" alt="Terrain2STL" style="width: 50%; height: auto;">
+            <p class="image-caption">The Terrain2STL interface. Here are some of the parameters I messed around with to try and get an emphasis on the heights of the peaks of the mountains. Vertical scaling seemed to be the best here, where I ended up using a scale factor of around 2.5.</p>
+
+            <p>Here is the STL file I ended up creating using this:</p>
+            <iframe id="vs_iframe" src="https://www.viewstl.com/?embedded" style="border:0;margin:0;width:100%;height:100%;"></iframe>
+
+
+            <p>Now, I had to go about figuring out how to get this into the CNC milling machine. </p>
+            <p>Using Bobby's help, I knew that I could directly import the STL file onto the shopbot computer. I did have to mess around a little with the cropping of the actual model based on the dimensions of the milling area I defined, but it was pretty straightforward.</p>
+            <p>However, I had to figure out how to turn this STL file on the shopbot software into a toolpath instructions for the CNC machine that would give me the resolution I wanted.</p>
+
+            <figure>
+                <img src="map1test.jpg" alt="Map model in toolpath software">
+                <p class="image-caption">The map model imported into the toolpath editing software</p>
+            </figure>
+
+            <p>Traditionally, we could simply use the profile tool and calculate the toolpath. However, this wouldn't work here since the model was both 3D and had a non-uniform design height across the model (since the mountains were all of different heights).</p>
+            <p>In solving this problem, I discovered the "3D Roughing" and "3D Finishing" toolpaths in the software. </p>
+            <p>The 3D Roughing toolpath would allow me to remove material from the model in a way that would be as efficient as possible, while the 3D Finishing toolpath would allow me to finish the model to a high precision.</p>
+
+            <p>However, even before I could choose these toolpaths, I encountered another problem. </p>
+            <p>The software was telling me that my map model was too thick to be milled on the machine with the material that was being used.</p>
+
+            <figure>
+                <img src="thicknesserror.jpg" alt="Thickness error in toolpath software">
+                <p class="image-caption">The software warning about the model thickness exceeding material limits</p>
+            </figure>
+
+            <p>Turns out, even though I had found the thickest material available (~2cm of thickness), the map, at its current scale, was just too big.</p>
+            <p>Naturally, then, I had to scale down the model. </p>
+
+            <figure>
+                <img src="scalingdesign.jpg" alt="Scaling down the map model">
+                <p class="image-caption">Scaling down the map model to fit within the material thickness constraints</p>
+            </figure>
+            
+
+            <p>I was also able to re-import the model and where the z-axis plane was on the model, and could remove a signifant chunk of the thick base that wasn't needed.</p>
+
+            <figure>
+                <img src="processingmap.jpg" alt="Processing the map model">
+                <p class="image-caption">Processing the map model to remove unnecessary base material</p>
+            </figure>
+
+
+            
+            <p>This worked! Now, I could go back to the actual toolpath creation. Figuring out the existence of the 3D Roughing and Finishing toolpaths was a great solution to my problem, and I was able to use this to create a toolpath that would allow me to mill the model.</p>
+            <p>One thing I did need to consider, however, was that in order to get the desired 'finish' from the 3D finishing toolpath, I would need to use a smaller and finer bit. No worries, though – Kassia taught me how to replace the bit on the machine!</p>
+            <p>For the 3D Roughing toolpath, I used a 1/8" bit, while for the 3D Finishing toolpath, I used a 1/16" bit.</p>
+
+            <p>Here are the toolpaths I created:</p>
+
+            <div style="display: flex; gap: 20px;">
+                <figure style="flex: 1;">
+                    <img src="roughing.jpg" alt="3D Roughing toolpath">
+                    <p class="image-caption">The 3D Roughing toolpath - notice how it efficiently removes material in broad strokes</p>
+                </figure>
+
+                <figure style="flex: 1;">
+                    <img src="finishing.jpg" alt="3D Finishing toolpath">
+                    <p class="image-caption">The 3D Finishing toolpath - much finer detail and precision in the final pass</p>
+                </figure>
+            </div>
+
+            <p>I then wanted to try a test mill to see if this roughing and finishing technique would work. So, I used a cardboard-like material that had a relatively good thickness, and tried my luck.</p>
+            <p>Unfortunately, due to a small oversight, I messed up the cut slightly this first time around. After I replaced the bit, I ended up not recalibrating the mill properly, and the finishing toolpath ended up just creating a new cut altogeher:</p>
+
+            <figure>
+                <img src="cardboardtest.jpg" alt="Test mill">
+                <p class="image-caption">Two accidental separate cuts – one from the 3D Roughing toolpath and one from the 3D Finishing toolpath</p>
+            </figure>
+            
+            <p>BUT, as frustrating as this was, it ended up letting me replace the CNC Bit a few times, allowing me to practice. </p>
+
+            <figure>
+                <video controls>
+                    <source src="bitreplacement.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <p class="image-caption">Timelapse of replacing the CNC bit - getting more comfortable with the process each time</p>
+            </figure>
+
+            <p>This practice run showed me that the machine's resolution was indeed good, and that the finer toolbit would be good too. One thing I also noticed was that when the fine toolbit started cutting into the material, since there weren't any prior cuts in that area, the material actually started to smolder a little. I suspect this was because of the massive amount of friction paired with tiny bit that was causing the CNC head to head up and cause the cardboard-like material to smoke/smolder slightly in response.</p>
+            <p>I had initially wondered if I could go straight to the finishing toolpath with the 1/16" bit, but with the way this material responded, I had to ensure there was a roughing pass that the finer bit can go over – else I risk a fire</p>
+
+            
+            <p>Now that I had this practice run out of the way, I felt more confident do make the cut on an actual wood piece.</p>
+            <p>So, to make the cut, I chose to use a piece of plywood (~20mm thick) that was available in the PS70 lab. </p>
+
+            <p>Following all the same procedures as before (i.e creating the toolpath, etc), I was able to make a pretty good cut on this piece of wood.</p>
+
+           
+            <p>However, it appears that there was another problem that had occured.</p>
+            <p>As from what I could tell, plywood is made up of multiple layers and pieces of wood going in random directions and glued together into place. With this structure, when the mill went through and cut it, parts of the wood just seemed to splinter and break off. They just came off and the cuts became unreliable in terms of their intended vs actual shape. </p> 
+            
+                <figure>
+                    <img src="wood1.jpg" alt="Wood cut">
+                    <p class="image-caption">The final cut on the wood piece – there is a bunch of splintering visible</p>
+                </figure>
+    
+            <p>I did not know how to solve this, as almost all the large materials available were plywood.</p>
+            <p>I suspected there were two issues (apart from the material itself) that were also contributing to this problem: the design itself effectively only had one mountain peak, and it wasn't extrelemy high since I could not cut a tall piece. Moreover, the entire design was compressed into a small area, which I suspect also caused issues since there were finer details all placed into a really small area. </p>
+           <p>In efforts to fix these issues, I decided to use another website to try and get a better detailed representation of the terrain.</p>
+           <p>I first used TouchTerrain (https://touchterrain.geol.iastate.edu/):</p>
+
+           <figure>
+            <img src="touchterrain.png" alt="TouchTerrain">
+            <p class="image-caption">TouchTerrain map of the region</p>
+           </figure>
+
+           <p>But, although I was able to get some good details, it wasn't as much as I wanted. Turns out that this website had the best qaulity resolution for US-based locations, and worldwide maps apart from this had much less depth to them.</p>
+
+           <p>So, I decided to try another website, called map2stl.com</p>
+           <p>This website, altough with much less settings to mess around with, ended up giving me the best results. And it even gave me a preview so I could adjust before I downloaded (unlike the other two where I had around 5 files per website just for trial and error)!</p>
+
+           <figure>
+            <img src="map2stl.png" alt="Map2STL">
+            <p class="image-caption">Map2STL User interface</p>
+           </figure>
+
+           <p>Just to have flexibility and to see what worked with the CNC shopbot software, I decided to create 2 different models, one that focused in on 1-2 mountains, and one that was a little larger. Here are the models:</p>
+
+           <iframe id="vs_iframe" src="https://www.viewstl.com/?embedded" style="border:0;margin:0;width:100%;height:100%;"></iframe>
+            <p class="image-caption">Model 1</p>
+
+            <iframe id="vs_iframe" src="https://www.viewstl.com/?embedded" style="border:0;margin:0;width:100%;height:100%;"></iframe>
+            <p class="image-caption">Model 2</p>
+        
+           
+            <p>But, this didn't solve the plywood splintering issue I was also facing. Thankfully, after raising the concern in class, Wyatt came to the rescue!</p>
+            <p>Turns out, he had some leftover wood material that he'd bought from Home Depot! It wasn't made up of layers, but rather a solid piece of wood that wouldn't splinter.</p>
+            
+            <p>AWESOME! So, I decided to try it out on this material.</p>
+
+            <figure>
+                <img src="newwood.jpg" alt="New wood material cut">
+                <p class="image-caption">How this new material looked like. It seems to be quite different to plywood!</p>
+            </figure>
+
+
+            <p>The only issue I seemed to face was that this material was quite thick. It was slightly more thicker than the plywood I was using before, so I faced issues in getting the nailgun to anchor it to the CNC bed.</p>
+            <p>Sometimes the wood would crack and break apart from where the nailgun shot the nail, sometimes the nailgun couldn't even break the surface, sometimes the nailgun would get the nail through but it wouldn't reach the bottom of the wood, and sometimes the nail would even just explode instead of going through the wood.</p>
+            <p>Many tries of trying to get the nails in, the wood appeared to be anchored so I decided to go ahead and make the cut.</p>
+            <p>TURNS OUT, it was not anchored at all. It just seemed to slightly be stuck in place and was not strong whatsoever.</p>
+            <p>As soon as I started the cut, the drill went into the wood, the wood spun around the drill bit, SHOT UP, and FLEW OFF THE BED. It broke the drill bit in the process :(</p>
+
+            <figure>
+                <img src="brokenbit.jpg" alt="Broken drill bit">
+                <p class="image-caption">The broken drill bit – the wood flying around seemed to have cleanly split the bit</p>
+            </figure>
+            
+            <p>I ended up having to replace the bit again.</p>
+
+            <p>I also then decided to sand down this chunk of wood to make it thinner. After about 10 minutes of using the sanding machine, it was visibly thinner.</p>
+            <p>I then tried again, and after pushing the nailgun down as much as I could... IT ANCHORED!</p>
+            <p>Awesome! So, I went ahead and made the cut, using the same toolpaths and processes as before. This is how it turned out:</p>
+        <div style="display: flex; gap: 20px; margin-bottom: 20px;">
+            <figure style="flex: 1;">
+                <img src="mountain1.jpg" alt="First mountain cut image">
+            </figure>
+            <figure style="flex: 1;">
+                <img src="mountain2.jpg" alt="Second mountain cut image">
+            </figure>
+        </div>
+
+        <div style="display: flex; gap: 20px;">
+            <figure style="flex: 1;">
+                <img src="mountain3.jpg" alt="Third mountain cut image">
+
+            </figure>
+            <figure style="flex: 1;">
+                <img src="mountain4.jpg" alt="Fourth mountain cut image">
+            </figure>
+            
+        </div>
+        <p class="image-caption">The mountain cut from different angles!</p>
+        
+        <p> SUCCESS! I CNC'd the Brauneck map onto a piece of wood! </p>
+
+
+            
+        </div>
+    </main>
+
+    <main class="week-content fade-in-delayed">
+        <div class="content-box">
+            <h2>3D Molding/ Post-processing</h2>
+            <p>This week, we also learnt how to 3D mold objects!</p>
+            <p>I wanted to try and mold out the brauneck map that I had CNC'd out of wood. However, since I was facing issues with the quality of my cut until quite late into the week, I asked for Bobby's advice. He recommended that I could try 3D printing the model that I wanted to cut, and try and create a mold out of that instead.</p>
+            <p>Sounded pretty straightforward, so I went ahead and tried to do that!</p>
+            <p>The first step was to 3D print the model. Since I had already obtained the two new STL files using the map2stl.com website, all I had to do now was print them out. Since I knew the detail of the 3D printer is pretty good, I decided to print the more detailed model.</p>
+            
+
+            <div style="display: flex; gap: 20px; margin-bottom: 20px;">
+                <figure style="flex: 1;">
+                    <img src="3dmountain.jpg" alt="3D printed mountain model view 1">
+                </figure>
+                <figure style="flex: 1;">
+                    <img src="3dmountain2.jpg" alt="3D printed mountain model view 2">
+                </figure>
+                <figure style="flex: 1;">
+                    <img src="3dmountain3.jpg" alt="3D printed mountain model view 3">
+                </figure>
+            </div>
+            <p class="image-caption">The 3D printed mountain model from different angles, ready for molding</p>
+
+            <p>I used PLA, which seemed fine in the moment, but turns out was a slight oversight. Given the thermal properties of PLA, I couldn't vaccuum-press a mold around it since the hot plastic would just melt the PLA and ruin the model. </p>
+            
+            <p>So, I had to go about figuring out another way to create a mold. </p>
+            <p>I decided to try and use a silicone mold instead. </p>
+            <p>I used a silicone mold kit that was available in the lab, and I mixed the two components in equal parts to get the subtance I had to pour around the mountain model.</p>
+            <p>But, it wasn't that simple. Turns out, the model itself was slightly too big, and I couldn't find a contained to put it into and pour the silicone around it.</p>
+            <p>So, as a last resort, I decided to create a makeshift cardboard container with superglue to seal the edges. This was just big enough to fit the model and pour the silicone around!</p>
+
+        <div style="display: flex; gap: 20px;">
+            <figure style="flex: 1;">
+                <img src="moldbox.jpg" alt="Cardboard box container for silicone mold view 1">
+            </figure>
+            <figure style="flex: 1;">
+                <img src="moldbox2.jpg" alt="Cardboard box container for silicone mold view 2">
+            </figure>
+        </div>
+        <p class="image-caption">The makeshift cardboard container I created to hold the silicone mold</p>
+
+        <p>After that, pouring the silicone over the model was pretty straightforward. I had to mix a few batches together to get enough to pour over the model, but it eventually covered it all.</p>
+
+        <figure>
+            <video controls style="width: 100%;">
+                <source src="mold_timelapse.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <p class="image-caption">Timelapse of pouring the silicone over the model</p>
+        </figure>
+
+        <p>It seemed fine, so I let it sit overnight to cure. However, when I checked on it after 5 mins of pouring it, the model seemed to have risen up and begun poking out of the silicone layer.</p>
+        <p>I needed something to press the model down into the silicone layer. I'm a fan of trying using whatever I can find, so I ended up using a random contraption of a wooden stick with a weight on top of it</p>
+        
+        <figure>
+            <img src="tempfix.jpg" alt="Wooden stick with weight to press down the model">
+            <p class="image-caption">The makeshift contraption I used to press the model down into the silicone</p>
+        </figure>
+        
+        <p>This seemed to work! I left it overnight to cure, and this is how the mold turned out:</p>
+       
+        <figure>
+            <img src="finalmold.jpg" alt="The final cured silicone mold">
+            <p class="image-caption">The final cured silicone mold</p>
+        </figure>
+        
+        <p>I also wanted to try creating another mold, this time for a Harvard keychain similar to one I already had. I started by designing the Harvard logo in Adobe Illustrator, using the PDF trace options to get a clean vector version. After exporting it as a DXF file, I imported it into Fusion 360 where I modified the sketch to create a 3D model.</p>
+
+        <figure>
+            <img src="vertassketch.png" alt="Harvard Veritas logo sketch">
+        </figure>
+        <p class="image-caption">The Harvard logo design process, now as a sketch in Fusion 360</p>
+
+        <p>To create the mold, I used Fusion's cut and intersect operations to design a two-part mold that could be used to cast the keychain. Although I first created a simple 3D mold, I then realized I had to mirror and invert everything to ensure that when the resin was poured it would come out the right way.</p>
+
+        <div style="display: flex; gap: 20px;">
+            <figure style="flex: 1;">
+                <img src="initialmold.png" alt="Initial 3D mold design">
+                <p class="image-caption">The initial 3D mold design before inversion</p>
+            </figure>
+            <figure style="flex: 1;">
+                <img src="inverteddesign_mold.png" alt="Inverted mold design">
+                <p class="image-caption">The inverted mold design that ensures proper resin casting</p>
+            </figure>
+        </div>
+
+
+        <p>I quickly realized that PLA wouldn't work for this mold - it needed to be flexible to release the cast piece. So I switched to TPU filament. After modifying my Prusa's g-code settings to handle the flexible filament (slowing down the print speed and adjusting the retraction settings), I started the print. It was a long process - the mold took a whopping 7 hours to print! But the wait was worth it as the resolution turned out great.</p>
+
+        <div style="display: flex; gap: 20px;">
+            <figure style="flex: 1;">
+                <img src="7hours.jpg" alt="TPU mold printing in progress">
+            </figure>
+            <figure style="flex: 1;">
+                <img src="tpumold.jpg" alt="Completed TPU mold">
+            </figure>
+        </div>
+        <p class="image-caption">The TPU mold during printing and after completion</p>
+
+        <p>For the casting material, I used a simple resin available in the lab, mixing it in a 3:1 ratio. To add a personal touch, I mixed in a small amount of red paint to give the keychain a nice crimson color. After thoroughly mixing everything together, I poured the resin into the 3D printed mold and left it to cure overnight.</p>
+
+        <figure>
+            <img src="resin.jpg" alt="Mixing the resin with red paint">
+            <p class="image-caption">Mixing the resin with red paint to achieve the perfect Harvard crimson color</p>
+        </figure>
+
+        <p>The final result turned out really well! The flexible TPU mold made it easy to remove the cast piece, and the red color gave it a nice Harvard touch. The details from the original logo were preserved perfectly in the cast piece.</p>
+
+        <figure>
+            <img src="final_keychain.jpg" alt="Completed Harvard keychain">
+            <p class="image-caption">The finished Harvard keychain, showing the crisp details and perfect crimson color</p>
+        </figure>
+            
+            
+            
+
+
+
+        </div>
+    </main>
 
     <a href="../index.html" class="back-btn">Back to Home</a>
 </body>
