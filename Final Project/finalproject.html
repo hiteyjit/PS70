@@ -87,11 +87,10 @@
             </ul>
 
             <h3>Detailed CAD Components</h3>
-            <h4>1. Motor Mount Base Plate</h4>
+            <h3>1. Motor Mount Base Plate</h3>
             <ul>
                 <li>Dimensions: 70mm × 50mm × 5mm</li>
-                <li>Material: Aluminum 6061</li>
-                <li>Features:
+                <li>Material: PLA</li>
                     <ul>
                         <li>Four M4 mounting holes for skateboard deck attachment</li>
                         <li>Two elongated slots for motor position adjustment</li>
@@ -101,9 +100,9 @@
                 </li>
             </ul>
 
-            <h4>2. Motor Pulley</h4>
+            <h3>2. Motor Pulley</h3>
             <ul>
-                <li>Material: Aluminum 6061</li>
+                <li>Material: Aluminum (used by me, but PLA also acceptable)</li>
                 <li>Features:
                     <ul>
                         <li>HTD 5M tooth profile (30 teeth)</li>
@@ -115,7 +114,7 @@
                 </li>
             </ul>
 
-            <h4>3. Wheel Pulley</h4>
+            <h3>3. Wheel Pulley</h3>
             <ul>
                 <li>Material: Aluminum 6061</li>
                 <li>Features:
@@ -129,7 +128,7 @@
                 </li>
             </ul>
 
-            <h4>4. Electronics Enclosure</h4>
+            <h3>4. Electronics Enclosure</h3>
             <ul>
                 <li>Dimensions: 120mm × 80mm × 40mm</li>
                 <li>Material: PLA or PETG</li>
@@ -144,66 +143,7 @@
                 </li>
             </ul>
 
-            <h3>Fabrication Process</h3>
-            <h4>1. CNC Machining (Motor Mount and Pulleys)</h4>
-            <ul>
-                <li>Material Preparation:
-                    <ul>
-                        <li>Cut aluminum stock to rough size</li>
-                        <li>Surface both sides for accurate dimensions</li>
-                        <li>Secure material using appropriate fixturing</li>
-                    </ul>
-                </li>
-                <li>Tool Selection:
-                    <ul>
-                        <li>3mm end mill for general machining</li>
-                        <li>1mm end mill for fine details</li>
-                        <li>3mm drill bit for mounting holes</li>
-                        <li>Countersink tool for flush mounting</li>
-                    </ul>
-                </li>
-                <li>Machining Steps:
-                    <ul>
-                        <li>Rough cut outer profile</li>
-                        <li>Machine mounting holes and slots</li>
-                        <li>Cut reinforcement ribs</li>
-                        <li>Finish cut outer profile</li>
-                        <li>Deburr all edges</li>
-                    </ul>
-                </li>
-            </ul>
-
-            <h4>2. 3D Printing (Electronics Enclosure)</h4>
-            <ul>
-                <li>Print Settings:
-                    <ul>
-                        <li>Layer height: 0.2mm</li>
-                        <li>Infill: 30%</li>
-                        <li>Walls: 3 perimeters</li>
-                        <li>Support: Yes (for overhangs)</li>
-                        <li>Brim: Yes (for better adhesion)</li>
-                    </ul>
-                </li>
-                <li>Post-Processing:
-                    <ul>
-                        <li>Remove support material</li>
-                        <li>Sand rough edges</li>
-                        <li>Test fit components</li>
-                        <li>Apply waterproofing if needed</li>
-                    </ul>
-                </li>
-            </ul>
-
-            <h4>3. Assembly Preparation</h4>
-            <ul>
-                <li>Clean all machined parts</li>
-                <li>Verify dimensions match design specifications</li>
-                <li>Test fit all components</li>
-                <li>Prepare mounting hardware</li>
-                <li>Apply thread locker to critical fasteners</li>
-            </ul>
-
-            <h3>Design Considerations</h3>
+            <h3>Remember</h3>
             <ul>
                 <li>Motor Mount:
                     <ul>
@@ -224,7 +164,7 @@
                 <li>Electronics Enclosure:
                     <ul>
                         <li>Protect components from water and debris</li>
-                        <li>Allow for adequate ventilation</li>
+                        <li>Allow for adequate ventilation -- THIS IS VERY IMPORTANT!</li>
                         <li>Provide easy access for maintenance</li>
                         <li>Include cable management features</li>
                     </ul>
@@ -243,10 +183,9 @@
             <ul>
                 <li>Solder socket wires to flex sensor terminals
                     <ul>
-                        <li>Use thin, flexible wire (24-26 AWG recommended)</li>
-                        <li>Apply flux to ensure good solder joints</li>
+                        <li>Use thin, flexible wire</li>
                         <li>Keep solder joints small and clean</li>
-                        <li>Test continuity after soldering</li>
+                        <li>Remember to test connections after soldering</li>
                     </ul>
                 </li>
                 <li>Apply heat shrink tubing for protection
@@ -329,23 +268,21 @@
                         <li>Connect I2C between boards</li>
                         <li>Secure all connections with hot glue</li>
                     </ul>
-                </li>
-                <li>Power system setup
+
+                <li>Voltage Divider Circuit
                     <ul>
-                        <li>Install small LiPo battery (3.7V, 500mAh minimum)</li>
-                        <li>Add power switch for easy control</li>
-                        <li>Include charging port if needed</li>
-                        <li>Secure battery with Velcro or mounting bracket</li>
+                        <li>Connect flex sensor to 3.3V power supply</li>
+                        <li>Connect 10kΩ resistor in series with flex sensor</li>
+                        <li>Connect ADC pin between flex sensor and resistor</li>
+                        <li>Connect other end of resistor to ground</li>
                     </ul>
                 </li>
-                <li>Final testing
-                    <ul>
-                        <li>Verify all connections</li>
-                        <li>Test flex sensor readings</li>
-                        <li>Check battery life</li>
-                        <li>Ensure comfortable fit and operation</li>
-                    </ul>
-                </li>
+
+                <figure>
+                    <img src="glove3.jpg" alt="Voltage Divider Circuit Diagram" style="max-width: 100%; height: auto;">
+                    <figcaption>Voltage divider circuit for flex sensor. The flex sensor acts as a variable resistor, creating a voltage divider with the 10kΩ fixed resistor. The voltage at the ADC pin varies with flex sensor resistance.</figcaption>
+                </figure>
+            </li>
             </ul>
         </div>
 
@@ -360,7 +297,7 @@
             </ul>
 
             <h3>Wiring Diagram</h3>
-            <pre>
+            <pre style="background-color: #000; color: #fff; padding: 20px; border-radius: 5px; font-family: monospace; white-space: pre; overflow-x: auto;">
 Flex Sensor Board (ESP32 #1)
 ┌────────────────┐
 │                │

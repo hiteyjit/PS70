@@ -79,7 +79,8 @@
 }
 
 /* Add styling for lists in content boxes */
-.content-box ul {
+.content-box ul,
+.content-box ol {
     list-style-type: disc;
     margin: 1rem 0;
     padding-left: 2rem;
@@ -87,11 +88,26 @@
     display: block;
 }
 
+.content-box ol {
+    list-style-type: decimal;
+}
+
 .content-box li {
     margin-bottom: 0.5rem;
     line-height: 1.6;
     display: list-item;
     color: #333333 !important;
+}
+
+.content-box ul ul,
+.content-box ol ul {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.content-box ul li,
+.content-box ol li {
+    margin-bottom: 0.5rem;
 }
 
 .content-box strong {
