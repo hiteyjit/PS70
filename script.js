@@ -9,9 +9,9 @@ const weeks = [
     { number: 8, image: 'Week 8/week8.jpg', description: 'CNC Milling' },
     { number: 9, image: 'Week 9/week9.jpg', description: 'Radio Control' },
     { number: 10, image: 'Week 10/week10.jpg', description: 'Machine Building' },
-    { number: 11, image: 'Week 11/week11.jpg', description: 'Project Development I' },
-    { number: 12, image: 'Week 12/week12.jpg', description: 'Project Development II' },
-    { number: 13, image: 'Week 13/week13.jpg', description: 'Final Project Ideation' }
+    { number: 11, image: 'Week 11/week11.jpg', description: 'Integrated Project – Final Project Check-in' },
+    //{ number: 12, image: 'Week 12/week12.jpg', description: 'Project Development II' },
+   { number: 13, image: 'Week 13/week13.jpg', description: 'My Personal Journey Building the Final Project' }
 ];
 
 const gridContainer = document.querySelector('.grid-container');

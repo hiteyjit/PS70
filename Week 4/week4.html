@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="../styles.css">
     <link rel="stylesheet" href="../week-styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Raleway:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 <body>
     <header class="week-header fade-in">
@@ -14,8 +15,181 @@
     </header>
     
     <div class="week-description fade-in">
-        <h3>Check back here for more updates!</h3>
+        <h3>Using a microcontroller!</h3>
     </div>
+
+    <main class="week-content fade-in-delayed">
+        <div class="content-box">
+            <h2>YIPPEEEEE ITS MICROCONTROLLER TIME!!</h2>
+        </div>
+
+        <div class="content-box">
+            <h2>Project Decision</h2>
+            <p>For this week's microcontroller project, I had two options: either modify my kinetic sculpture to incorporate microcontroller functionality or create an entirely new project. After careful consideration, I decided that adding a microcontroller to the flower sculpture wouldn't significantly enhance its functionality. Instead, I chose to create a new project that would help me better understand how microcontrollers work with sensors.</p>
+
+            <h2>Distance Measurement Project</h2>
+            <p>I decided to create a distance measurement system using an Arduino and an ultrasonic sensor. The goal was to create a visual representation of how far an object is from the sensor, making it both functional and visually engaging.</p>
+
+            <h3>Understanding the Ultrasonic Sensor</h3>
+            <p>Before diving into the project, I needed to understand how the HC-SR04 ultrasonic sensor works. After some research online, I learned that these sensors work by emitting high-frequency sound waves and measuring the time it takes for the waves to bounce back after hitting an object. The distance can then be calculated using the speed of sound.</p>
+
+            <figure>
+                <div style="display: flex; gap: 20px;">
+                    <figure style="flex: 1;">
+                        <img src="hcsro4.png" alt="HC-SR04 Ultrasonic Sensor">
+                        <p class="image-caption">The HC-SR04 ultrasonic sensor used in the project</p>
+                    </figure>
+                    <figure style="flex: 1;">
+                        <img src="work.jpg" alt="HC-SR04 Ultrasonic Sensor Diagram">
+                        <p class="image-caption">Diagram showing how the ultrasonic sensor works</p>
+                    </figure>
+                </div>
+            </figure>
+
+            <h3>Circuit Design</h3>
+            <p>For the output, I wanted something more visual than just serial printing. While graphing was an option, I decided to use LEDs that would light up sequentially based on the distance measured. Initially, I considered using an LED strip, but after testing, I realized that these strips light up all at once rather than sequentially. This led me to manually wire individual LEDs to a breadboard, connecting each to the Arduino's analog output pins.</p>
+
+            <figure>
+                <img src="led.jpeg" alt="LED Strip">
+                <p class="image-caption">Initial testing with an LED strip</p>
+            </figure>
+
+            <h3>Code Implementation</h3>
+            <p>With the circuit set up, I implemented the logic using simple if/else statements to control the LEDs based on the distance readings from the ultrasonic sensor.</p>
+            <p>There were a lot of nested if statements primarily because I had to ensure that the correct number of LEDs lit up based on the distance. This method seemed to work best out of all the other logic methods I tried – sometimes only one of the lights would light up and sometimes none of them would turn on. There is certainly a more efficient way to go about this, I just found this to work for me.</p>
+
+            <pre><code>
+// Arduino code for distance measurement with LEDs
+const int trigPin = 9;  
+const int echoPin = 10; 
+const int led1 = 2;
+const int led2 = 3;
+const int led3 = 4;
+const int led4 = 5;
+const int led5 = 6;
+
+float duration, distance;  
+
+void setup() {  
+	pinMode(trigPin, OUTPUT);  
+	pinMode(echoPin, INPUT);  
+  pinMode(led1, OUTPUT);
+  pinMode(led2, OUTPUT);
+  pinMode(led3, OUTPUT);
+  pinMode(led4, OUTPUT);
+  pinMode(led5, OUTPUT);
+
+	Serial.begin(9600);  
+}  
+
+void loop() {  
+	digitalWrite(trigPin, LOW);  
+	delayMicroseconds(2);  
+	digitalWrite(trigPin, HIGH);  
+	delayMicroseconds(10);  
+	digitalWrite(trigPin, LOW);
+  
+
+  duration = pulseIn(echoPin, HIGH);  
+
+  distance = (duration*.0343)/2;  
+
+
+  if (distance < 28) {
+
+    digitalWrite(led1, HIGH);
+    Serial.print("hello");
+    digitalWrite(led2, LOW);
+    digitalWrite(led3, LOW);
+    digitalWrite(led4, LOW);
+    digitalWrite(led5, LOW);
+
+    if (distance < 20) {
+      digitalWrite(led1, HIGH);
+      digitalWrite(led2, HIGH);
+      digitalWrite(led3, LOW);
+      digitalWrite(led4, LOW);
+      digitalWrite(led5, LOW);
+
+      if (distance < 15) {
+        digitalWrite(led1, HIGH);
+        digitalWrite(led2, HIGH);
+        digitalWrite(led3, HIGH);
+        digitalWrite(led4, LOW);
+        digitalWrite(led5, LOW);
+         
+         if (distance <10){
+          digitalWrite(led1, HIGH);
+          digitalWrite(led2, HIGH);
+          digitalWrite(led3, HIGH);
+          digitalWrite(led4, HIGH);
+          digitalWrite(led5, LOW);
+          if (distance < 5) {
+            digitalWrite(led1, HIGH);
+            digitalWrite(led2, HIGH);
+            digitalWrite(led3, HIGH);
+            digitalWrite(led4, HIGH);
+            digitalWrite(led5, HIGH);
+          }
+         }
+
+      }
+    } 
+  }
+    
+ if (distance > 28){
+        Serial.print("nope");
+        digitalWrite(led1, LOW);
+        digitalWrite(led2, LOW);
+        digitalWrite(led3, LOW);
+        digitalWrite(led4, LOW);
+        digitalWrite(led5, LOW);
+
+  }
+
+
+  
+
+	Serial.print("Distance: ");  
+	Serial.println(distance);  
+	delay(100);  
+} 
+
+            </code></pre>
+
+            <a href="distance_sensor.zip" class="download-btn" download>
+                <i class="fas fa-download"></i> Download CAD Files
+            </a>
+
+            <h3>Final Circuit and Demonstration</h3>
+            <p>Here's the final circuit setup and a video demonstrating how the system works.</p>
+
+            <figure>
+                <div style="display: flex; gap: 20px;">
+                    <figure style="flex: 1;">
+                        <img src="eyes.jpg" alt="Circuit Diagram">
+                        <p class="image-caption">How the project looks once assembled – those are some nice eyes!</p>
+                    </figure>
+                    <figure style="flex: 1;">
+                        <img src="Cricuit.png" alt="Circuit Design">
+                        <p class="image-caption">The circuit design used</p>
+                    </figure>
+                </div>
+            </figure>
+
+            <figure style="text-align: center;">
+                <iframe src="https://drive.google.com/file/d/16NS8FABAO1Plhvb7vAlrC_mjuq_8RyrO/preview" width="640" height="480" allow="autoplay" style="display: block; margin: 0 auto;"></iframe>
+                <p class="image-caption">Video demonstration of the distance measurement system</p>
+            </figure>
+        </div>
+
+
+        <div class="content-box">
+        
+        
+        </div>
+    </main>
+
 
     <a href="../index.html" class="back-btn">Back to Home</a>
 </body>

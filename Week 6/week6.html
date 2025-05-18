@@ -14,8 +14,184 @@
     </header>
     
     <div class="week-description fade-in">
-        <h3>Check back here for more updates!</h3>
+        <h3>Capactiance sensors and thermistors!</h3>
     </div>
+
+    <main class="week-content fade-in-delayed">
+    <div class="content-box">
+        <h2>Capacitive Water Level Sensor</h2>
+        <p>For this week's project, I created a capacitive water level sensor using basic materials and Arduino. This project demonstrates how we can use the principles of capacitance to measure water levels without direct contact with the water.</p>
+
+        <h3>Materials Used</h3>
+        <ul>
+            <li>Arduino board</li>
+            <li>2 copper strips (as capacitive plates)</li>
+            <li>10 MΩ resistor</li>
+            <li>Jumper wires</li>
+            <li>Plastic container</li>
+        </ul>
+
+        <figure>
+            <img src="materials.jpg" alt="Project materials">
+            <figcaption>Materials used for the water level sensor</figcaption>
+        </figure>
+
+        <h3>Circuit Setup</h3>
+        <p>The circuit is quite simple but effective. We use two copper plates as capacitive plates, with one connected to the TX pin (through a 10 MΩ resistor) and the other to the RX pin. The plates are placed vertically on the outside of a plastic container, creating a capacitor that changes its value based on the water level between them.</p>
+
+        <figure>
+            <img src="circuit.jpg" alt="Circuit diagram">
+            <figcaption>Circuit diagram showing the capacitive sensing setup</figcaption>
+        </figure>
+
+        <h3>Code Implementation</h3>
+        <p>Here's the code I used to implement the capacitive sensing:</p>
+
+        <pre><code>
+const int sendPin = 2;
+const int sensePin = 4;
+unsigned long duration;
+
+void setup() {
+  Serial.begin(9600);
+  pinMode(sendPin, OUTPUT);
+  pinMode(sensePin, INPUT);
+}
+
+void loop() {
+  // Discharge capacitor
+  pinMode(sensePin, OUTPUT);
+  digitalWrite(sensePin, LOW);
+  delay(10);
+  pinMode(sensePin, INPUT);
+
+  // Charge via sendPin
+  digitalWrite(sendPin, HIGH);
+
+  // Time how long it takes for sensePin to go HIGH
+  unsigned long start = micros();
+  while (digitalRead(sensePin) == LOW && (micros() - start) < 3000) {
+    // wait until the pin goes HIGH
+  }
+  duration = micros() - start;
+
+  Serial.println(duration);
+  delay(100);
+}
+        </code></pre>
+
+        <h3>How It Works</h3>
+        <p>The sensor works by measuring how long it takes for the capacitor (formed by the copper plates) to charge. When there's more water between the plates, the dielectric constant increases, leading to higher capacitance and longer charge times. This relationship allows us to determine the water level based on the charging duration.</p>
+
+        <figure>
+            <img src="working.jpg" alt="Sensor in action">
+            <figcaption>The sensor measuring different water levels</figcaption>
+        </figure>
+
+        <h3>Calibration Process</h3>
+        <p>To calibrate the sensor, I marked different water levels (0%, 25%, 50%, 75%, 100%) on the container and recorded the corresponding duration values. This created a calibration curve that could be used to convert the raw duration readings into actual water levels.</p>
+
+        <figure>
+            <img src="calibration.jpg" alt="Calibration graph">
+            <figcaption>Calibration curve showing the relationship between water level and duration</figcaption>
+        </figure>
+
+        <h3>Important Notes</h3>
+        <ul>
+            <li>Use shielded wires to minimize noise interference</li>
+            <li>Maintain consistent spacing (1-2 cm) between the copper plates</li>
+            <li>Use a non-conductive container material</li>
+            <li>The relationship between water level and duration is typically non-linear</li>
+        </ul>
+
+        <h3>Results and Observations</h3>
+        <p>The sensor proved to be quite reliable for measuring water levels. The readings were consistent and showed a clear relationship with the actual water level. The non-linear nature of the relationship was expected and could be accounted for in the calibration process.</p>
+
+        <figure>
+            <img src="results.jpg" alt="Final results">
+            <figcaption>Final setup showing the sensor in action</figcaption>
+        </figure>
+    </div>
+    </main>
+
+    <main class="week-content fade-in-delayed">
+        <div class="content-box">
+        <h2>Temperature Monitoring with Thermistor</h2>
+        <p>This week, I explored temperature sensing using a thermistor, a type of resistor whose resistance changes with temperature. I created a system that monitors temperature and provides visual feedback using LEDs.</p>
+
+        <h3>Components Used</h3>
+        <ul>
+            <li>Arduino Uno</li>
+            <li>NTC Thermistor (10kΩ)</li>
+            <li>10kΩ resistor (for voltage divider)</li>
+            <li>3 LEDs with 220Ω current-limiting resistors</li>
+            <li>Breadboard and jumper wires</li>
+        </ul>
+
+        <figure>
+            <img src="thermistor_circuit.jpg" alt="Thermistor circuit setup">
+            <figcaption>The complete circuit setup with thermistor and LEDs</figcaption>
+        </figure>
+
+        <h3>Circuit Design</h3>
+        <p>The circuit uses a voltage divider configuration with the thermistor and a fixed 10kΩ resistor. The Arduino reads the voltage at the divider point through analog pin A0. Three LEDs are connected to digital pins 3, 4, and 5, each with a 220Ω current-limiting resistor.</p>
+
+        <pre><code>
+const int thermistorPin = A0;
+const int ledPins[] = {3, 4, 5}; // LEDs on pins 3, 4, 5
+const int numLeds = 3;
+
+const float BETA = 3950; // Beta value of the thermistor
+const float seriesResistor = 10000; // 10kΩ fixed resistor
+const float tempThreshold = 30.0; // °C
+
+void setup() {
+  Serial.begin(9600);
+  for (int i = 0; i < numLeds; i++) {
+    pinMode(ledPins[i], OUTPUT);
+  }
+}
+
+void loop() {
+  int analogValue = analogRead(thermistorPin);
+
+  // Convert analog to temperature using Beta formula
+  float resistance = seriesResistor * (1023.0 / analogValue - 1.0);
+  float temperature = 1.0 / (log(resistance / 10000.0) / BETA + 1.0 / 298.15) - 273.15;
+
+  Serial.print("Temp: ");
+  Serial.println(temperature);
+
+  // Turn on LEDs if temp exceeds threshold
+  for (int i = 0; i < numLeds; i++) {
+    digitalWrite(ledPins[i], temperature > tempThreshold ? HIGH : LOW);
+  }
+
+  delay(500);
+}
+        </code></pre>
+
+        <h3>How It Works</h3>
+        <p>The thermistor's resistance decreases as temperature increases (NTC type). The voltage divider converts this resistance change into a voltage that the Arduino can read. The code uses the Beta equation to convert the analog reading into temperature in Celsius. When the temperature exceeds 30°C, all three LEDs turn on.</p>
+
+        <figure>
+            <img src="thermistor_working.jpg" alt="System in action">
+            <figcaption>The system monitoring temperature and controlling LEDs</figcaption>
+        </figure>
+
+        <h3>Calibration and Accuracy</h3>
+        <p>For accurate temperature readings, I used the manufacturer's Beta value (3950) for the thermistor. The system proved to be quite accurate when compared to a digital thermometer, with readings typically within ±1°C of the actual temperature.</p>
+
+        <h3>Future Improvements</h3>
+        <ul>
+            <li>Add a buzzer for audible alerts</li>
+            <li>Implement a temperature gradient using RGB LEDs</li>
+            <li>Replace delay() with millis() for better timing control</li>
+            <li>Add a display to show exact temperature values</li>
+        </ul>
+        </div>
+    </main>
+
 
     <a href="../index.html" class="back-btn">Back to Home</a>
 </body>

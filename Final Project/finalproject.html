@@ -3,40 +3,227 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Final Project- PS70</title>
+    <title>Final Project – PS70</title>
     <link rel="stylesheet" href="../styles.css">
     <link rel="stylesheet" href="../week-styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Raleway:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 <body>
     <header class="week-header fade-in">
-        <h1>Final Project</h1>
+        <h1>Final Project – How to build</h1>
     </header>
     
     <div class="week-description fade-in">
-        <h3>Wow final project so cool frfr</h3>
+        <h3>the moment you've all been waiting for – THE GLOVE CONTROLLED ELECTRIC SKATEBOARD!</h3>
     </div>
 
     <main class="week-content fade-in-delayed">
         <div class="content-box">
-            <h2>Project Planning</h2>
-            <img src="your-photo.jpg" alt="Project Planning Image">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            <h2>Video Demonstration</h2>
+            <p>Watch the glove-controlled electric skateboard in action!</p>
+            <video width="100%" controls>
+                <source src="demo-video.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <p>Not bad, right?</p>
         </div>
 
         <div class="content-box">
-            <h2>Initial Sketches</h2>
-            <img src="your-photo.jpg" alt="Sketches Image">
-            <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <h2>Parts List</h2>
+            <h3>Hardware Components</h3>
+            <ul>
+                <li>Electric skateboard motor (<a href="https://a.co/d/9yW1uMH" target="_blank">Amazon link</a>)</li>
+                <li>Longboard deck (wood, to be custom cut)</li>
+                <li>Skateboard trucks (standard longboard size)</li>
+                <li>Skateboard wheels (compatible with custom pulley system)</li>
+                <li>HTD 5M timing belt (30 teeth)</li>
+                <li>Metal pulley for motor shaft</li>
+                <li>DeWalt battery (18V or 20V recommended)</li>
+                <li>DeWalt battery holder/adapter</li>
+                <li>Electronic Speed Controller (ESC) - bidirectional type</li>
+                <li>M3, M4, and M5 screws and nuts (assorted lengths)</li>
+                <li>Thick wood sheet for CNC cutting (minimum 1/2" thick)</li>
+            </ul>
+
+            <h3>Electronics</h3>
+            <ul>
+                <li>3 × ESP32 XIAO microcontrollers</li>
+                <li>Flex sensors (<a href="https://a.co/d/cbANXsr" target="_blank">Amazon link</a>)</li>
+                <li>Thin cotton glove</li>
+                <li>Soldering wire</li>
+                <li>Heat shrink tubing</li>
+                <li>Jumper wires</li>
+                <li>Breadboard (for prototyping)</li>
+                <li>PCB (optional, for final build)</li>
+                <li>10kΩ resistors (for flex sensor voltage divider)</li>
+            </ul>
+
+            <h3>Tools Required</h3>
+            <ul>
+                <li>3D printer</li>
+                <li>CNC machine (Shaper preferred)</li>
+                <li>Soldering iron and solder</li>
+                <li>Drill with assorted bits</li>
+                <li>Screwdriver set</li>
+                <li>Needle and thread</li>
+                <li>Hot glue gun</li>
+                <li>Superglue</li>
+                <li>Multimeter</li>
+                <li>Wire cutters/strippers</li>
+                <li>Calipers or measuring tape</li>
+                <li>Computer with Fusion 360 installed</li>
+            </ul>
         </div>
 
         <div class="content-box">
-            <h2>First Prototype</h2>
-            <img src="your-photo.jpg" alt="Prototype Image">
-            <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+            <h2>Part 1: CAD Design and Fabrication</h2>
+            <h3>Motor Mount & Pulley System Design</h3>
+            <p>Start by carefully measuring your motor components and creating the necessary CAD designs in Fusion 360. The design process includes:</p>
+            <ul>
+                <li>Creating a rectangular base plate (70mm × 50mm × 5mm)</li>
+                <li>Designing mounting holes and adjustment slots</li>
+                <li>Adding reinforcement ribs for strength</li>
+                <li>Creating pulley designs with HTD 5M tooth profiles</li>
+            </ul>
+
+            <h3>Skateboard Deck Design</h3>
+            <p>The deck design should include:</p>
+            <ul>
+                <li>Longboard shape (900-1000mm × 200-250mm)</li>
+                <li>Mounting holes for all components</li>
+                <li>Proper placement of motor mount and trucks</li>
+            </ul>
+
+            <h3>Electronics Enclosure Design</h3>
+            <p>Design a protective enclosure (120mm × 80mm × 40mm) with:</p>
+            <ul>
+                <li>Internal mounting points for ESP32 and ESC</li>
+                <li>Ventilation holes</li>
+                <li>Strain relief for cables</li>
+                <li>Removable lid with secure fastening</li>
+            </ul>
+        </div>
+
+        <div class="content-box">
+            <h2>Part 2: Glove Controller Assembly</h2>
+            <h3>Flex Sensor Integration</h3>
+            <p>The glove controller requires careful assembly of flex sensors:</p>
+            <ul>
+                <li>Solder socket wires to flex sensor terminals</li>
+                <li>Apply heat shrink tubing for protection</li>
+                <li>Test each sensor with a multimeter</li>
+            </ul>
+
+            <h3>Glove Preparation and Assembly</h3>
+            <p>Follow these steps for the glove assembly:</p>
+            <ul>
+                <li>Select appropriate thin cotton glove</li>
+                <li>Mark sensor positions on fingers</li>
+                <li>Sew sensors securely to glove</li>
+                <li>Route and secure wires to wrist area</li>
+                <li>Create strain relief points</li>
+            </ul>
+        </div>
+
+        <div class="content-box">
+            <h2>Part 3: Electronics and Programming</h2>
+            <h3>ESP32 Microcontroller Setup</h3>
+            <p>The system uses three ESP32 XIAO microcontrollers:</p>
+            <ul>
+                <li>Board 1: Interfaces with flex sensors</li>
+                <li>Board 2: I2C master and ESP-NOW transmitter</li>
+                <li>Board 3: ESP-NOW receiver and ESC controller</li>
+            </ul>
+
+            <h3>Code Implementation</h3>
+            <p>Here's the code for the flex sensor board:</p>
+            <pre><code>
+#include <Wire.h>
+
+// Define pins
+const int flexPin1 = 32; // ADC2 pin
+const int flexPin2 = 33; // ADC2 pin
+
+// Variables for sensor values
+int flexValue1 = 0;
+int flexValue2 = 0;
+
+void setup() {
+  Serial.begin(115200);
+  Wire.begin(0x08); // Initialize I2C as slave with address 0x08
+  Wire.onRequest(requestEvent); // Register event
+}
+
+void loop() {
+  // Read flex sensor values
+  flexValue1 = analogRead(flexPin1);
+  flexValue2 = analogRead(flexPin2);
+  
+  // Map flex sensor range to useful values (0-180)
+  flexValue1 = map(flexValue1, 1000, 4095, 0, 180);
+  flexValue2 = map(flexValue2, 1000, 4095, 0, 180);
+  
+  // Constrain values to prevent out-of-range issues
+  flexValue1 = constrain(flexValue1, 0, 180);
+  flexValue2 = constrain(flexValue2, 0, 180);
+  
+  Serial.print("Flex 1: ");
+  Serial.print(flexValue1);
+  Serial.print(", Flex 2: ");
+  Serial.println(flexValue2);
+  
+  delay(50); // Small delay for stability
+}
+
+// Function called when master requests data
+void requestEvent() {
+  Wire.write(flexValue1);
+  Wire.write(flexValue2);
+}
+            </code></pre>
+
+            <a href="skateboard_code.zip" class="download-btn" download>
+                <i class="fas fa-download"></i> Download Complete Code
+            </a>
+        </div>
+
+        <div class="content-box">
+            <h2>Part 4: Final Assembly</h2>
+            <h3>Putting Everything Together</h3>
+            <p>Follow these steps for final assembly:</p>
+            <ol>
+                <li>Mount the motor and trucks</li>
+                <li>Install the battery mount</li>
+                <li>Set up the electronics box</li>
+                <li>Complete the glove setup</li>
+                <li>Perform testing and calibration</li>
+            </ol>
+
+            <h3>Safety and Maintenance</h3>
+            <p>Important safety considerations:</p>
+            <ul>
+                <li>Regularly check belt tension</li>
+                <li>Inspect mounting screws</li>
+                <li>Clean bearings and mechanical components</li>
+                <li>Update firmware as needed</li>
+                <li>Replace flex sensors when necessary</li>
+            </ul>
+
+            <h3>Troubleshooting Tips</h3>
+            <ul>
+                <li>Motor not responding: Check ESP-NOW connection</li>
+                <li>Inconsistent throttle: Recalibrate flex sensors</li>
+                <li>Belt slipping: Adjust tension</li>
+                <li>Short battery life: Check for system shorts</li>
+                <li>Overheating: Add ventilation</li>
+            </ul>
         </div>
     </main>
 
     <a href="../index.html" class="back-btn">Back to Home</a>
 </body>
 </html> 
+
+
+

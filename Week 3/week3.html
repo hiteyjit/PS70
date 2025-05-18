@@ -3,19 +3,138 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Week 3 - PS70 Project</title>
+    <title>Week 3 - Build a Kinetic Sculpture</title>
     <link rel="stylesheet" href="../styles.css">
     <link rel="stylesheet" href="../week-styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Raleway:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 <body>
     <header class="week-header fade-in">
         <h1>Week 3</h1>
     </header>
     
-    <div class="week-description fade-in">
-        <h3>Check back here for more updates!</h3>
+    <main class="week-content fade-in-delayed">
+
+        <div class="content-box">
+            <h3>Learning About Motors and Gears</h3>
+            <p>This week, we delved into the fascinating world of basic motors and gears. We learned how simple mechanical movements can be achieved through the careful arrangement of gears and motors. The fundamental principle of gear ratios and how they can be combined to create different types of movement was particularly interesting.</p>
+
+            <h3>Project Planning</h3>
+            <p>For my kinetic sculpture project, I initially considered two different approaches:</p>
+            <ul>
+                <li>A car design featuring a cam-like wheel movement system</li>
+                <li>A sculpture incorporating a sophisticated gear system</li>
+            </ul>
+            <p>While the car design seemed more straightforward, I decided to challenge myself by creating a circular arrangement of gears. The design features a series of interconnected gears arranged in a circular pattern, with an external ring attached to the outer frame that will drive the entire system. This more complex design will allow me to explore the intricate relationships between different gear ratios and create an engaging visual display of mechanical movement.</p>
+
+        <h3>The Flower Design</h3>
+        <p>After careful consideration, I decided to create a kinetic sculpture resembling a flower. The design incorporates two distinct types of motion:</p>
+        <ul>
+            <li>Individual petal rotation: Each petal spins around its own center axis</li>
+            <li>Collective motion: All petals rotate together around the center of the flower</li>
+        </ul>
+
+        <p>This dual-motion systemm, in my mind, was meant to create something visually engaging where the petals appear to dance both individually and as a unified whole. The challenge lied in creating a gear system that can achieve both types of movement simultaneously.</p>
+
+        <h3>Design Challenges</h3>
+        <p>The main technical challenge was figuring out how to create a gear system that would allow for both the individual petal rotation and the collective movement around the center. I needed to consider:</p>
+        <ul>
+            <li>How to mount the petals so they can rotate independently</li>
+            <li>The gear ratios needed for smooth movement</li>
+            <li>The structural integrity of the design</li>
+            <li>How to power the entire system with a single motor</li>
+        </ul>
+
+        <h3>Design and Creation Process</h3>
+        <p>I knew that if I incorporated a static rail shaped in a circle, gears could interface with that and travel in a large circle. Additionally, one gear could connect to a motor and interface with another gear to make it spin. In combining both of these concepts together, I employed the design of a system of gears connected to one central gear driven by a motor, and all of these connected motors are further held in place by interfacing with a circular border that acts as a rail for the pieces to move around.</p>
+
+        <figure>
+            <img src="concept.jpg" alt="Initial concept sketch">
+            <p class="image-caption">Initial concept sketch of the gear system</p>
+        </figure>
+
+        <p>I first began designing the prototypes in Fusion 360. Although I could manually design a gear, there is a Fusion plugin (SpurGear) that makes life incredibly easier when it comes to creating gears of a specific specification. So, I defined some initial parameters and used these to create some gears.</p>
+
+        <figure>
+            <img src="spurgear.png" alt="Gear design in Fusion 360">
+            <p class="image-caption">Gear design in Fusion 360 using the SpurGear plugin</p>
+        </figure>
+
+        <p>The hole diameters were pretty arbitrary, but the central gear's motor had to be just large enough to fit the axle of the DC motor it was going to connect to. Hence, the central gear had its hole diameter set to 5mm.</p>
+
+        <p>Once I had the gears, I could then try and create the ring-shaped gear border. I tried manually sketching a few of my own using the sketch function and staying relative to the gear's fingers. I cut some prototypes out of wood and cardboard, but the issue was that I seemed to consistently be a little off – either the gear would skip some of the ridges in the ring, or the ridges would be too far apart and the gear would get stuck.</p>
+
+        <figure>
+            <img src="prototypeissues.jpeg" alt="Prototype issues">
+            <p class="image-caption">Issues with the initial prototypes - gear skipping and getting stuck</p>
+        </figure>
+
+        <p>As a result, I then decided to follow a YouTube tutorial that walked me through what I had to do. This was much better, and because I had my parameters set too, I was easily able to move things around and create a ring of the right specifications to fit with the gear.</p>
+
+        <figure>
+            <img src="finalring.png" alt="Final ring design">
+            <p class="image-caption">Final ring design with correct specifications</p>
+        </figure>
+
+        <p>Once I had the ring and gears ready, I CAD'd some rods and cosmetic appearance related things. I added the shapes of the petals and the center of the flower, and also added some rods that the gears would attach to so the petals could sit on top of the gears.</p>
+
+        <figure>
+            <img src="finaldesign.png" alt="Final CAD design">
+            <p class="image-caption">CAD design with one of the petals and rods – I just duplicated this when I needed to make more</p>
+        </figure>
+
+        <p>I laser cut the gears and flower parts, and 3D printed the rods. I also made a special rod for the center as I also had to account for the shaft of the motor taking up the hole in the center gear (this rod had a flat base that could attach onto the face of the gear instead of be inserted in a hole in the center of the gear).</p>
+        <figure style="text-align: center;">
+            <iframe src="https://drive.google.com/file/d/1Tks8i_rcN2eXEWmEjoEsinVdnQGOSZQG/preview" width="640" height="480" allow="autoplay" style="display: block; margin: 0 auto;"></iframe>
+            <p class="image-caption">Laser cutting!</p>
+        </figure>
+
+        <p>I needed a base for the gears to rest on (the motor's shaft would go through the center of this base), this was very simple to make, but the base and the border ring were 2 different parts – they needed to be glued together to be held in place. In order for the ring to be placed precisley in line with the center of the base, I aligned the center of the inside of the ring and the base itself, and then glued on the ring to make sure it was correctly positioned. This worked great.</p>
+
+        <div style="display: flex; gap: 20px;">
+            <figure style="flex: 1;">
+                <img src="base.jpg" alt="Aligning centers of base and ring">
+                <p class="image-caption">Aligning the centers of the base and ring for proper positioning</p>
+            </figure>
+
+            <figure style="flex: 1;">
+                <img src="glue.jpg" alt="Gluing the ring to the base">
+                <p class="image-caption">Gluing the ring to the base </p>
+            </figure>
+        </div>
+
+        <div style="display: flex; gap: 20px;">
+            <figure style="flex: 1;">
+                <img src="front.jpg" alt="Final assembly view 1">
+                <p class="image-caption">Final assembly - front view</p>
+            </figure>
+
+            <figure style="flex: 1;">
+                <img src="top.jpg" alt="Final assembly view 2">
+                <p class="image-caption">Final assembly - top view</p>
+            </figure>
+            <figure style="flex: 1;">
+                <img src="side.jpg" alt="Final assembly view 3">
+                <p class="image-caption">Final assembly - side view</p>
+            </figure>
+        </div>
+
+        <figure style="text-align: center;">
+            <iframe src="https://drive.google.com/file/d/10JbnOsqJgMt-5h6IeRc4ZPiwdKZ62wz7/preview" width="640" height="480" allow="autoplay" style="display: block; margin: 0 auto;"></iframe>
+            <p class="image-caption">The kinetic sculpture in motion</p>
+        </figure>
+
+        <a href="kinetic_sculpture.zip" class="download-btn" download>
+            <i class="fas fa-download"></i> Download CAD Files
+        </a>
+        </div>
+
+    <div class="content-box">
+        <h2>Lessons Learned</h2>
+        <p>One key lesson I learned during this project was about the importance of proper sizing and tolerances. The ring I designed was quite small, which led to several issues during operation. The tight fit created excessive friction between the gears and the ring, sometimes requiring complete disassembly and reassembly of the mechanism. Additionally, the high friction forces caused the gears to occasionally jump or skip, creating unwanted stress on the components. For future iterations, I would definitely increase the size of the ring to provide more clearance and reduce these friction-related issues.</p>
     </div>
+    </main>
 
     <a href="../index.html" class="back-btn">Back to Home</a>
 </body>
