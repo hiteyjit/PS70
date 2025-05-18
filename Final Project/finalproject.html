@@ -22,7 +22,9 @@
         <div class="content-box">
             <h2>Video Demonstration</h2>
             <p>Watch the glove-controlled electric skateboard in action!</p>
-            <iframe src="https://drive.google.com/file/d/1radj8QVcKDuNS3xVZTFyik5hNy_3WWge/preview" width="640" height="480" allow="autoplay"></iframe>
+            <div style="display: flex; justify-content: center;">
+                <iframe src="https://drive.google.com/file/d/1radj8QVcKDuNS3xVZTFyik5hNy_3WWge/preview" width="640" height="480" allow="autoplay"></iframe>
+            </div>
             <p>Not bad, right?</p>
         </div>
 
@@ -239,19 +241,111 @@
             <h3>Flex Sensor Integration</h3>
             <p>The glove controller requires careful assembly of flex sensors:</p>
             <ul>
-                <li>Solder socket wires to flex sensor terminals</li>
-                <li>Apply heat shrink tubing for protection</li>
-                <li>Test each sensor with a multimeter</li>
+                <li>Solder socket wires to flex sensor terminals
+                    <ul>
+                        <li>Use thin, flexible wire (24-26 AWG recommended)</li>
+                        <li>Apply flux to ensure good solder joints</li>
+                        <li>Keep solder joints small and clean</li>
+                        <li>Test continuity after soldering</li>
+                    </ul>
+                </li>
+                <li>Apply heat shrink tubing for protection
+                    <ul>
+                        <li>Use 2:1 shrink ratio tubing</li>
+                        <li>Cover each solder joint individually</li>
+                        <li>Use heat gun on low setting to avoid damaging sensors</li>
+                        <li>Ensure no exposed wires remain</li>
+                    </ul>
+                </li>
+                <li>Test each sensor with a multimeter
+                    <ul>
+                        <li>Check resistance range (typically 10kΩ to 40kΩ)</li>
+                        <li>Verify smooth resistance change when flexing</li>
+                        <li>Ensure no shorts between terminals</li>
+                        <li>Document baseline readings for calibration</li>
+                    </ul>
+                </li>
             </ul>
 
             <h3>Glove Preparation and Assembly</h3>
             <p>Follow these steps for the glove assembly:</p>
             <ul>
-                <li>Select appropriate thin cotton glove</li>
-                <li>Mark sensor positions on fingers</li>
-                <li>Sew sensors securely to glove</li>
-                <li>Route and secure wires to wrist area</li>
-                <li>Create strain relief points</li>
+                <li>Select appropriate thin cotton glove
+                    <ul>
+                        <li>Choose size that fits snugly but allows movement</li>
+                        <li>Ensure good finger dexterity</li>
+                        <li>Prefer light color for better visibility of components</li>
+                        <li>Avoid gloves with thick seams</li>
+                    </ul>
+                </li>
+                <li>Mark sensor positions on fingers
+                    <ul>
+                        <li>Place sensors on index and middle fingers</li>
+                        <li>Mark positions for optimal flex detection</li>
+                        <li>Ensure sensors align with finger joints</li>
+                        <li>Leave space for wire routing</li>
+                    </ul>
+                </li>
+                <li>Sew sensors securely to glove
+                    <ul>
+                        <li>Use strong thread (nylon recommended)</li>
+                        <li>Stitch around sensor edges</li>
+                        <li>Create multiple anchor points</li>
+                        <li>Avoid stitching over sensor terminals</li>
+                    </ul>
+                </li>
+                <li>Route and secure wires to wrist area
+                    <ul>
+                        <li>Run wires along finger seams</li>
+                        <li>Use small stitches to secure wire paths</li>
+                        <li>Create strain relief points at finger bases</li>
+                        <li>Bundle wires neatly at wrist</li>
+                    </ul>
+                </li>
+                <li>Create strain relief points
+                    <ul>
+                        <li>Add extra stitching at wire junctions</li>
+                        <li>Use fabric loops for wire management</li>
+                        <li>Secure wires at wrist with elastic band</li>
+                        <li>Test wire movement during flexing</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <h3>Controller Box Assembly</h3>
+            <ul>
+                <li>Prepare small enclosure (3D printed or purchased)
+                    <ul>
+                        <li>Size: approximately 60mm × 40mm × 20mm</li>
+                        <li>Include mounting points for ESP32 boards</li>
+                        <li>Add strain relief for wires</li>
+                        <li>Design for easy access to components</li>
+                    </ul>
+                </li>
+                <li>Install ESP32 boards
+                    <ul>
+                        <li>Mount boards securely using standoffs</li>
+                        <li>Connect flex sensor wires to ADC pins</li>
+                        <li>Connect I2C between boards</li>
+                        <li>Secure all connections with hot glue</li>
+                    </ul>
+                </li>
+                <li>Power system setup
+                    <ul>
+                        <li>Install small LiPo battery (3.7V, 500mAh minimum)</li>
+                        <li>Add power switch for easy control</li>
+                        <li>Include charging port if needed</li>
+                        <li>Secure battery with Velcro or mounting bracket</li>
+                    </ul>
+                </li>
+                <li>Final testing
+                    <ul>
+                        <li>Verify all connections</li>
+                        <li>Test flex sensor readings</li>
+                        <li>Check battery life</li>
+                        <li>Ensure comfortable fit and operation</li>
+                    </ul>
+                </li>
             </ul>
         </div>
 
