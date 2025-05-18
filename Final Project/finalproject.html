@@ -87,22 +87,154 @@
                 <li>Creating pulley designs with HTD 5M tooth profiles</li>
             </ul>
 
-            <h3>Skateboard Deck Design</h3>
-            <p>The deck design should include:</p>
+            <h3>Detailed CAD Components</h3>
+            <h4>1. Motor Mount Base Plate</h4>
             <ul>
-                <li>Longboard shape (900-1000mm × 200-250mm)</li>
-                <li>Mounting holes for all components</li>
-                <li>Proper placement of motor mount and trucks</li>
+                <li>Dimensions: 70mm × 50mm × 5mm</li>
+                <li>Material: Aluminum 6061</li>
+                <li>Features:
+                    <ul>
+                        <li>Four M4 mounting holes for skateboard deck attachment</li>
+                        <li>Two elongated slots for motor position adjustment</li>
+                        <li>Reinforcement ribs (3mm height) for structural integrity</li>
+                        <li>Countersunk holes for flush mounting</li>
+                    </ul>
+                </li>
             </ul>
 
-            <h3>Electronics Enclosure Design</h3>
-            <p>Design a protective enclosure (120mm × 80mm × 40mm) with:</p>
+            <h4>2. Motor Pulley</h4>
             <ul>
-                <li>Internal mounting points for ESP32 and ESC</li>
-                <li>Ventilation holes</li>
-                <li>Strain relief for cables</li>
-                <li>Removable lid with secure fastening</li>
+                <li>Material: Aluminum 6061</li>
+                <li>Features:
+                    <ul>
+                        <li>HTD 5M tooth profile (30 teeth)</li>
+                        <li>5mm bore for motor shaft</li>
+                        <li>Set screw holes (M3) for secure mounting</li>
+                        <li>20mm outer diameter</li>
+                        <li>10mm width</li>
+                    </ul>
+                </li>
             </ul>
+
+            <h4>3. Wheel Pulley</h4>
+            <ul>
+                <li>Material: Aluminum 6061</li>
+                <li>Features:
+                    <ul>
+                        <li>HTD 5M tooth profile (60 teeth)</li>
+                        <li>Custom mounting system for wheel spokes</li>
+                        <li>40mm outer diameter</li>
+                        <li>10mm width</li>
+                        <li>Counterbored mounting holes for M4 bolts</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <h4>4. Electronics Enclosure</h4>
+            <ul>
+                <li>Dimensions: 120mm × 80mm × 40mm</li>
+                <li>Material: PLA or PETG</li>
+                <li>Features:
+                    <ul>
+                        <li>Internal mounting points for ESP32 and ESC</li>
+                        <li>Ventilation slots (2mm width)</li>
+                        <li>Cable strain relief points</li>
+                        <li>Removable lid with snap-fit design</li>
+                        <li>Waterproof gasket channel</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <h3>Fabrication Process</h3>
+            <h4>1. CNC Machining (Motor Mount and Pulleys)</h4>
+            <ul>
+                <li>Material Preparation:
+                    <ul>
+                        <li>Cut aluminum stock to rough size</li>
+                        <li>Surface both sides for accurate dimensions</li>
+                        <li>Secure material using appropriate fixturing</li>
+                    </ul>
+                </li>
+                <li>Tool Selection:
+                    <ul>
+                        <li>3mm end mill for general machining</li>
+                        <li>1mm end mill for fine details</li>
+                        <li>3mm drill bit for mounting holes</li>
+                        <li>Countersink tool for flush mounting</li>
+                    </ul>
+                </li>
+                <li>Machining Steps:
+                    <ul>
+                        <li>Rough cut outer profile</li>
+                        <li>Machine mounting holes and slots</li>
+                        <li>Cut reinforcement ribs</li>
+                        <li>Finish cut outer profile</li>
+                        <li>Deburr all edges</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <h4>2. 3D Printing (Electronics Enclosure)</h4>
+            <ul>
+                <li>Print Settings:
+                    <ul>
+                        <li>Layer height: 0.2mm</li>
+                        <li>Infill: 30%</li>
+                        <li>Walls: 3 perimeters</li>
+                        <li>Support: Yes (for overhangs)</li>
+                        <li>Brim: Yes (for better adhesion)</li>
+                    </ul>
+                </li>
+                <li>Post-Processing:
+                    <ul>
+                        <li>Remove support material</li>
+                        <li>Sand rough edges</li>
+                        <li>Test fit components</li>
+                        <li>Apply waterproofing if needed</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <h4>3. Assembly Preparation</h4>
+            <ul>
+                <li>Clean all machined parts</li>
+                <li>Verify dimensions match design specifications</li>
+                <li>Test fit all components</li>
+                <li>Prepare mounting hardware</li>
+                <li>Apply thread locker to critical fasteners</li>
+            </ul>
+
+            <h3>Design Considerations</h3>
+            <ul>
+                <li>Motor Mount:
+                    <ul>
+                        <li>Ensure sufficient clearance for belt movement</li>
+                        <li>Design for easy belt tension adjustment</li>
+                        <li>Include strain relief for motor wires</li>
+                        <li>Consider heat dissipation</li>
+                    </ul>
+                </li>
+                <li>Pulleys:
+                    <ul>
+                        <li>Maintain proper tooth engagement</li>
+                        <li>Ensure adequate belt wrap angle</li>
+                        <li>Design for easy installation/removal</li>
+                        <li>Include proper alignment features</li>
+                    </ul>
+                </li>
+                <li>Electronics Enclosure:
+                    <ul>
+                        <li>Protect components from water and debris</li>
+                        <li>Allow for adequate ventilation</li>
+                        <li>Provide easy access for maintenance</li>
+                        <li>Include cable management features</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <a href="skateboard_cad.zip" class="download-btn" download>
+                <i class="fas fa-download"></i> Download CAD Files
+            </a>
         </div>
 
         <div class="content-box">
@@ -131,9 +263,37 @@
             <h3>ESP32 Microcontroller Setup</h3>
             <p>The system uses three ESP32 XIAO microcontrollers:</p>
             <ul>
-                <li>Board 1: Interfaces with flex sensors</li>
-                <li>Board 2: I2C master and ESP-NOW transmitter</li>
-                <li>Board 3: ESP-NOW receiver and ESC controller</li>
+                <li>Board 1: Interfaces with flex sensors (Sensor Board)</li>
+                <li>Board 2: Communicates with Board 1 via I2C and transmits via ESP-NOW (Transmitter Board)</li>
+                <li>Board 3: Receives ESP-NOW signals and controls the ESC (Receiver Board)</li>
+            </ul>
+
+            <h3>Wiring Diagram</h3>
+            <pre>
+Flex Sensor Board (ESP32 #1)
+┌────────────────┐
+│                │
+│ Flex Sensors   │    I2C
+│ (ADC2 pins)    ├────────────► ESP32 #2 ┐
+│                │    SDA/SCL             │ ESP-NOW
+└────────────────┘                        ├─────────► ESP32 #3 ──► ESC ──► Motor
+                                          │ Wireless
+                                          ┘
+            </pre>
+
+            <h3>Sensor Board Setup (ESP32 #1)</h3>
+            <p>Connect the flex sensors to ADC2 pins using voltage dividers:</p>
+            <ul>
+                <li>Connect one end of the flex sensor to 3.3V</li>
+                <li>Connect the other end to a 10kΩ resistor and the ADC input pin</li>
+                <li>Connect the other side of the resistor to GND</li>
+            </ul>
+
+            <p>Wire the I2C connection:</p>
+            <ul>
+                <li>Connect SDA to GPIO 21 on both boards</li>
+                <li>Connect SCL to GPIO 22 on both boards</li>
+                <li>Connect GND between boards</li>
             </ul>
 
             <h3>Code Implementation</h3>
@@ -161,6 +321,7 @@ void loop() {
   flexValue2 = analogRead(flexPin2);
   
   // Map flex sensor range to useful values (0-180)
+  // Calibrate these values based on your specific flex sensors
   flexValue1 = map(flexValue1, 1000, 4095, 0, 180);
   flexValue2 = map(flexValue2, 1000, 4095, 0, 180);
   
@@ -183,6 +344,199 @@ void requestEvent() {
 }
             </code></pre>
 
+            <h3>Code for I2C Master and ESP-NOW Transmitter (ESP32 #2)</h3>
+            <pre><code>
+#include <Wire.h>
+#include <esp_now.h>
+#include <WiFi.h>
+
+// Define receiver MAC address (replace with your ESP32 #3 MAC)
+uint8_t receiverMacAddress[] = {0x24, 0x6F, 0x28, 0x12, 0x34, 0x56};
+
+// Variables for sensor values
+uint8_t flexValue1 = 0;
+uint8_t flexValue2 = 0;
+
+// Create data structure
+typedef struct struct_message {
+  uint8_t throttle;
+  uint8_t brake;
+} struct_message;
+
+struct_message skateBoardData;
+
+// Callback function for when data is sent
+void OnDataSent(const uint8_t *mac_addr, esp_now_send_status_t status) {
+  Serial.print("Last Packet Send Status: ");
+  Serial.println(status == ESP_NOW_SEND_SUCCESS ? "Delivery Success" : "Delivery Fail");
+}
+
+void setup() {
+  Serial.begin(115200);
+  
+  // Initialize I2C as master
+  Wire.begin();
+  
+  // Set up ESP-NOW
+  WiFi.mode(WIFI_STA);
+  
+  // Init ESP-NOW
+  if (esp_now_init() != ESP_OK) {
+    Serial.println("Error initializing ESP-NOW");
+    return;
+  }
+  
+  // Register send callback
+  esp_now_register_send_cb(OnDataSent);
+  
+  // Register peer
+  esp_now_peer_info_t peerInfo;
+  memcpy(peerInfo.peer_addr, receiverMacAddress, 6);
+  peerInfo.channel = 0;  
+  peerInfo.encrypt = false;
+  
+  // Add peer        
+  if (esp_now_add_peer(&peerInfo) != ESP_OK){
+    Serial.println("Failed to add peer");
+    return;
+  }
+}
+
+void loop() {
+  // Request 2 bytes from slave device
+  Wire.requestFrom(0x08, 2);
+  
+  if (Wire.available() >= 2) {
+    flexValue1 = Wire.read();
+    flexValue2 = Wire.read();
+    
+    Serial.print("Received from I2C - Flex 1: ");
+    Serial.print(flexValue1);
+    Serial.print(", Flex 2: ");
+    Serial.println(flexValue2);
+    
+    // Prepare data to send
+    skateBoardData.throttle = flexValue1;
+    skateBoardData.brake = flexValue2;
+    
+    // Send data via ESP-NOW
+    esp_err_t result = esp_now_send(receiverMacAddress, (uint8_t *) &skateBoardData, sizeof(skateBoardData));
+    
+    if (result == ESP_OK) {
+      Serial.println("Sent with success");
+    } else {
+      Serial.println("Error sending the data");
+    }
+  }
+  
+  delay(100); // Small delay between transmissions
+}
+            </code></pre>
+
+            <h3>Code for ESP-NOW Receiver and ESC Controller (ESP32 #3)</h3>
+            <pre><code>
+#include <esp_now.h>
+#include <WiFi.h>
+#include <ESP32Servo.h>
+
+// Define ESC control pin
+const int escPin = 13;
+
+// Create ESC control object
+Servo ESC;
+
+// Variables for throttle control
+int throttleValue = 0;
+int brakeValue = 0;
+int escSignal = 1500; // Neutral point for bidirectional ESC is 1500 microseconds
+
+// Create data structure to receive
+typedef struct struct_message {
+  uint8_t throttle;
+  uint8_t brake;
+} struct_message;
+
+struct_message incomingData;
+
+// Callback function executed when data is received
+void OnDataRecv(const uint8_t * mac, const uint8_t *incomingData_buf, int len) {
+  memcpy(&incomingData, incomingData_buf, sizeof(incomingData));
+  
+  Serial.print("Bytes received: ");
+  Serial.println(len);
+  Serial.print("Throttle: ");
+  Serial.println(incomingData.throttle);
+  Serial.print("Brake: ");
+  Serial.println(incomingData.brake);
+  
+  // Update control values
+  throttleValue = incomingData.throttle;
+  brakeValue = incomingData.brake;
+}
+
+void setup() {
+  Serial.begin(115200);
+  
+  // Set device as WiFi Station
+  WiFi.mode(WIFI_STA);
+  
+  // Initialize ESC control
+  ESC.attach(escPin, 1000, 2000); // 1000-2000 microsecond range for standard ESC
+  ESC.writeMicroseconds(1500); // Set to neutral position (VERY IMPORTANT)
+  delay(3000); // Give ESC time to initialize
+  
+  // Initialize ESP-NOW
+  if (esp_now_init() != ESP_OK) {
+    Serial.println("Error initializing ESP-NOW");
+    return;
+  }
+  
+  // Register callback function
+  esp_now_register_recv_cb(OnDataRecv);
+  
+  Serial.println("Receiver Ready");
+}
+
+void loop() {
+  // Calculate ESC signal
+  // IMPORTANT: Bidirectional ESCs use 1500μs as neutral point (NOT 0μs)
+  // Values below 1500 are reverse, values above are forward
+  
+  // Map throttle from 0-180 to appropriate ESC range
+  // Assuming flexing forward = accelerate, flexing back = brake
+  if (throttleValue > 90) { // Forward motion
+    escSignal = map(throttleValue, 90, 180, 1500, 2000);
+  } else if (brakeValue > 90) { // Braking/reverse
+    escSignal = map(brakeValue, 90, 180, 1500, 1000);
+  } else {
+    escSignal = 1500; // Neutral position
+  }
+  
+  // Send the signal to the ESC
+  ESC.writeMicroseconds(escSignal);
+  
+  Serial.print("ESC Signal: ");
+  Serial.println(escSignal);
+  
+  delay(15); // Small delay for stability
+}
+
+// ESC Calibration Function (call this from setup if needed)
+void calibrateESC() {
+  Serial.println("ESC Calibration Starting");
+  delay(1000);
+  Serial.println("Setting maximum throttle");
+  ESC.writeMicroseconds(2000);
+  delay(5000);
+  Serial.println("Setting minimum throttle");
+  ESC.writeMicroseconds(1000);
+  delay(5000);
+  Serial.println("Setting neutral throttle");
+  ESC.writeMicroseconds(1500);
+  delay(5000);
+  Serial.println("ESC Calibrated!");
+}
+
             <a href="skateboard_code.zip" class="download-btn" download>
                 <i class="fas fa-download"></i> Download Complete Code
             </a>
@@ -191,32 +545,84 @@ void requestEvent() {
         <div class="content-box">
             <h2>Part 4: Final Assembly</h2>
             <h3>Putting Everything Together</h3>
-            <p>Follow these steps for final assembly:</p>
+            <p>Follow these detailed steps for final assembly:</p>
             <ol>
-                <li>Mount the motor and trucks</li>
-                <li>Install the battery mount</li>
-                <li>Set up the electronics box</li>
-                <li>Complete the glove setup</li>
-                <li>Perform testing and calibration</li>
+                <li>Mount the Motor and Trucks
+                    <ul>
+                        <li>Attach the trucks to the skateboard deck using appropriate screws</li>
+                        <li>Mount the motor mount to the skateboard deck using the predrilled holes</li>
+                        <li>Attach the motor to the motor mount</li>
+                        <li>Install the motor pulley onto the motor shaft, securing with set screws</li>
+                        <li>Attach the wheel pulley to the rear truck wheel, securing through the spokes</li>
+                        <li>Place the timing belt around both pulleys</li>
+                        <li>Adjust the motor mount position to achieve proper belt tension</li>
+                        <li>Tighten all screws securely</li>
+                    </ul>
+                </li>
+                <li>Install Battery Mount
+                    <ul>
+                        <li>Drill two mounting holes on the bottom of the skateboard for the DeWalt battery holder</li>
+                        <li>Attach the battery holder using appropriate screws and lock nuts</li>
+                        <li>Connect the battery holder output wires to the ESC power input</li>
+                        <li>Ensure proper polarity and secure all connections</li>
+                    </ul>
+                </li>
+                <li>Install Electronics Box
+                    <ul>
+                        <li>Mount the 3D-printed electronics box to the bottom of the skateboard</li>
+                        <li>Install the ESC and receiver ESP32 inside the box</li>
+                        <li>Connect the ESC signal wire to the ESP32 control pin</li>
+                        <li>Connect the ESC power wires to the battery and motor</li>
+                        <li>Secure all connections and arrange wires neatly inside the box</li>
+                        <li>Attach the box lid with screws</li>
+                    </ul>
+                </li>
+                <li>Final Glove Setup
+                    <ul>
+                        <li>Install the flex sensor ESP32 and the transmitter ESP32 in a small enclosure</li>
+                        <li>Attach this enclosure to the wrist area of the glove</li>
+                        <li>Connect the flex sensors to the ESP32 board</li>
+                        <li>Power the ESP32s with a small LiPo battery</li>
+                        <li>Secure all components to prevent movement while in use</li>
+                    </ul>
+                </li>
+                <li>Testing and Calibration
+                    <ul>
+                        <li>Insert a fully charged DeWalt battery into the holder</li>
+                        <li>Power on the glove controller</li>
+                        <li>Verify that the flex sensors are reading correctly</li>
+                        <li>Test the motor response to glove movements</li>
+                        <li>Adjust the code parameters if necessary for smoother control</li>
+                        <li>Test acceleration and braking in a safe, open area</li>
+                    </ul>
+                </li>
             </ol>
 
-            <h3>Safety and Maintenance</h3>
-            <p>Important safety considerations:</p>
+            <h3>Safety Check</h3>
             <ul>
-                <li>Regularly check belt tension</li>
-                <li>Inspect mounting screws</li>
+                <li>Ensure all screws and connections are tight</li>
+                <li>Check that the timing belt has proper tension</li>
+                <li>Verify that the ESC and motor are not overheating during operation</li>
+                <li>Test the emergency stop function (releasing all flex sensors)</li>
+                <li>Wear appropriate safety gear (helmet, pads) during operation</li>
+            </ul>
+
+            <h3>Maintenance</h3>
+            <ul>
+                <li>Regularly check belt tension and condition</li>
+                <li>Inspect all mounting screws and tighten as needed</li>
                 <li>Clean bearings and mechanical components</li>
-                <li>Update firmware as needed</li>
-                <li>Replace flex sensors when necessary</li>
+                <li>Update firmware as improvements are made</li>
+                <li>Replace flex sensors if sensitivity decreases over time</li>
             </ul>
 
             <h3>Troubleshooting Tips</h3>
             <ul>
-                <li>Motor not responding: Check ESP-NOW connection</li>
-                <li>Inconsistent throttle: Recalibrate flex sensors</li>
-                <li>Belt slipping: Adjust tension</li>
-                <li>Short battery life: Check for system shorts</li>
-                <li>Overheating: Add ventilation</li>
+                <li>Motor doesn't respond: Check ESP-NOW connection, verify ESC calibration</li>
+                <li>Inconsistent throttle control: Recalibrate flex sensor mapping values in code</li>
+                <li>Belt slipping: Increase belt tension or check for worn teeth</li>
+                <li>Short battery life: Verify there are no shorts in the system, consider a higher capacity battery</li>
+                <li>Overheating components: Add additional ventilation to the electronics enclosure</li>
             </ul>
         </div>
     </main>
